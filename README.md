@@ -148,4 +148,9 @@
     - Borro la página
     - Verifico que la página no exista
   
-
+## Ejecución de las pruebas utilizando Kraken:
+- Instalar node 14
+- Ejecutar: npm install
+- Modificar features/web/step_definitions/properties.json con las credenciales de usuario
+- De ser necesario hacer un reemplazo en los features del la base de la utl donde se está ejecutando Ghost 
+- Ejecutar: npx kraken-node run
