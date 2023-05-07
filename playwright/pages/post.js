@@ -4,7 +4,7 @@ exports.Post = class Post extends Utils {
 
     newPostTitle = "Relojes";
     newPostContent = "Relojes content";
-    pathFile = './results/post/';
+    pathFile = './results/ghost/';
     listElements = 'li.gh-list-row.gh-posts-list-item';
 
     statusFilter = 'div.gh-contentfilter-menu.gh-contentfilter-type';
