@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
-import {Login} from '../../../pages/login';
-import {Utils} from '../../../pages/utils';
-import {Page} from '../../../pages/page';
+import {Login} from './../../../../pages/login';
+import {Utils} from './../../../../pages/utils';
+import {Page} from './../../../../pages/page';
 
 
 // Escenario 1:
@@ -40,13 +40,13 @@ test('Escenario 1', async ({ page }) => {
   await utils.screenshot(pageObj.pathFile,'e1_04-page_crear_diligenciado.png');
 
 
-  // hacer clic para volver a los post y dejarlo en draft
+  // hacer clic para volver a los page y dejarlo en draft
   await pageObj.pagesBack.first().click();
   await utils.waitPlease(500);
-  await utils.screenshot(pageObj.pathFile,'e1_05-page_listado_posts.png');
+  await utils.screenshot(pageObj.pathFile,'e1_05-page_listado_pages.png');
 
   let pages =  await pageObj.draftPage();
-  await utils.screenshot(pageObj.pathFile,'e1_06-page_listado_posts_draft.png');
+  await utils.screenshot(pageObj.pathFile,'e1_06-page_listado_pages_draft.png');
 
 
   let elementFound = false;

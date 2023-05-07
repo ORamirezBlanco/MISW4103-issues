@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
-import {Login} from '../../../pages/login';
-import {Utils} from '../../../pages/utils';
-import {Page} from '../../../pages/page';
+import {Login} from './../../../../pages/login';
+import {Utils} from './../../../../pages/utils';
+import {Page} from './../../../../pages/page';
 
 
 // Escenario 3:
@@ -25,16 +25,16 @@ test('Escenario 3', async ({ page }) => {
   await utils.waitPlease(1000);
   await utils.screenshot(pageObj.pathFile, 'e3_01-page_principal.png');
 
-  // Hacer clic en post para ver el listado de todos los post
+  // Hacer clic en page para ver el listado de todos los page
   await pageObj.pagesLink.click();
   await utils.screenshot(pageObj.pathFile, 'e3_02-page_listado.png');
 
 
-  // hacer clic para crear un nuevo post
+  // hacer clic para crear un nuevo page
   await pageObj.pageNew.first().click();
   await utils.screenshot(pageObj.pathFile, 'e3_03-page_crear_vacio.png');
 
-  // colocar un titulo al nuevo post
+  // colocar un titulo al nuevo page
   await pageObj.pageTitle.fill(pageObj.newPageTitle);
   await pageObj.pageTitleConfirm.click();
   await utils.waitPlease(1000);
@@ -60,14 +60,14 @@ await utils.screenshot(pageObj.pathFile, 'e3_07-page_crear_publish_schedule_conf
 
 
 
-  // hacer clic para volver a los post 
+  // hacer clic para volver a los page 
   await pageObj.pagesBack.first().click();
   await utils.waitPlease(500);
-  await utils.screenshot(pageObj.pathFile, 'e3_08-page_listado_posts.png');
+  await utils.screenshot(pageObj.pathFile, 'e3_08-page_listado_pages.png');
 
 
   let pages = await pageObj.scheduledPages(); 
-  await utils.screenshot(pageObj.pathFile, 'e3_09-page_listado_posts_scheduled.png');
+  await utils.screenshot(pageObj.pathFile, 'e3_09-page_listado_pages_scheduled.png');
 
 
   let elementFound = false;

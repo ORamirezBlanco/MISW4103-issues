@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
-import {Login} from '../../../pages/login';
-import {Utils} from '../../../pages/utils';
-import {Post} from '../../../pages/post';
+import {Login} from './../../../../pages/login';
+import {Utils} from './../../../../pages/utils';
+import {Post} from './../../../../pages/post';
 
 
 // Escenario 4:

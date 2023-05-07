@@ -37,7 +37,7 @@ exports.Post = class Post extends Utils {
 
         this.postSettingsButton = page.getByRole('button', { name: 'Settings' });
         this.postSettingsDeleteButton = page.getByRole('button', { name: 'Delete post' });
-        this.postSettingsConfirmButton = page.getByRole('button', { name: 'Delete', exact: true });
+      //  this.postSettingsConfirmButton = page.getByRole('button', { name: 'Delete', exact: true });
         this.postSettingsCancelButton = page.getByRole('button', { name: 'Cancel' });
 
         this.postUpdateButton =   page.getByRole('button', { name: 'Update' });

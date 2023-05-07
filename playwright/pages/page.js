@@ -35,7 +35,10 @@ this.pagePageScheduleConfirm = page.getByRole('button', { name: 'Schedule', exac
                 
 this.pagePageFilterScheduled = page.getByText('Scheduled pages');
 
-
+this.pageSettingsButton = page.getByRole('button', { name: 'Settings' });
+this.pageSettingsDeleteButton = page.getByRole('button', { name: 'Delete page' });
+this.pageSettingsCancelButton = page.getByRole('button', { name: 'Cancel' });
+                
 
         
         
@@ -46,11 +49,8 @@ this.pagePageFilterScheduled = page.getByText('Scheduled pages');
 
         
         
-        this.postSettingsButton = page.getByRole('button', { name: 'Settings' });
-        this.postSettingsDeleteButton = page.getByRole('button', { name: 'Delete post' });
-        this.postSettingsConfirmButton = page.getByRole('button', { name: 'Delete', exact: true });
-        this.postSettingsCancelButton = page.getByRole('button', { name: 'Cancel' });
-
+       // this.postSettingsConfirmButton = page.getByRole('button', { name: 'Delete', exact: true });
+        
         this.postUpdateButton =   page.getByRole('button', { name: 'Update' });
         this.postUpdateUnPublishOption = page.locator('.gh-publishmenu-radio-button');
         this.postUpdateUnPublishConfirm = page.getByRole('button', { name: 'Unpublish', exact: true });
