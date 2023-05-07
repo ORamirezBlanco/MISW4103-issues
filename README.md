@@ -40,7 +40,7 @@
   - Escenario 4:
     - Ingreso al sistema
     - Creo una nueva página en borrador
-    - Verifico que se genere el id del post 
+    - Verifico que se genere el id del post / verifico que aparezca el botón borrar
 - Editar Post
   - Escenario 1:
     - Ingreso al sistema
@@ -92,7 +92,7 @@
   - Escenario 4:
     - Ingreso al sistema
     - Creo una nueva página en borrador
-    - Verifico que se genere el id de la pagina
+    - Verifico que se genere el id de la pagina / verifico que aparezca el botón borrar
 - Editar Página
   - Escenario 1:
     - Ingreso al sistema
@@ -148,4 +148,9 @@
     - Borro la página
     - Verifico que la página no exista
   
-
+## Ejecución de las pruebas utilizando Kraken:
+- Instalar node 14
+- Ejecutar: npm install
+- Modificar features/web/step_definitions/properties.json con las credenciales de usuario
+- De ser necesario hacer un reemplazo en los features del la base de la URL donde se está ejecutando Ghost 
+- Ejecutar: npx kraken-node run
