@@ -42,15 +42,15 @@ test('Escenario 4', async ({ page }) => {
     await utils.screenshot(pageObj.pathFile, 'e4_04-page_editar_original.png');
 
     await pageObj.pageSettingsButton.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease(500);
     await utils.screenshot(pageObj.pathFile, 'e4_05-page_menu_borrar.png');
 
     await pageObj.pageSettingsDeleteButton.first().click();
-    await utils.waitPlease(100);
+    await utils.waitPlease(500);
     await utils.screenshot(pageObj.pathFile, 'e4_06-page_menu_borrar_confirmar.png');
 
     await pageObj.pageSettingsDeleteButtonConfirm.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease(500);
     await utils.screenshot(pageObj.pathFile, 'e4_07-page_menu_borrar_borrad.png');
 
 

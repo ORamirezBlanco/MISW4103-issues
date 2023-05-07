@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
-import {Login} from './../../../../pages/login';
-import {Utils} from './../../../../pages/utils';
-import {Page} from './../../../../pages/page';
+import {Login} from '../../../../pages/login';
+import {Utils} from '../../../../pages/utils';
+import {Page} from '../../../../pages/page';
 
 
 // Escenario 1:
@@ -42,15 +42,15 @@ test('Escenario 3', async ({ page }) => {
     await utils.screenshot(pageObj.pathFile, 'e3_04-page_editar_original.png');
 
     await pageObj.pageSettingsButton.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease(500);
     await utils.screenshot(pageObj.pathFile, 'e3_05-page_menu_borrar.png');
 
     await pageObj.pageSettingsDeleteButton.first().click();
-    await utils.waitPlease(100);
+    await utils.waitPlease(500);
     await utils.screenshot(pageObj.pathFile, 'e3_06-page_menu_borrar_confirmar.png');
 
     await pageObj.pageSettingsDeleteButtonConfirm.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease(500);
     await utils.screenshot(pageObj.pathFile, 'e3_07-page_menu_borrar_borrad.png');
 
 
