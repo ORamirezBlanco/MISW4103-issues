@@ -154,3 +154,23 @@
 - Modificar features/web/step_definitions/properties.json con las credenciales de usuario
 - De ser necesario hacer un reemplazo en los features del la base de la URL donde se está ejecutando Ghost 
 - Ejecutar: npx kraken-node run
+
+
+## Ejecución de las pruebas utilizando playwright
+- Confirmar la utilizacion de node 14 (14.18.0):
+  **node -v**
+- Descargar el repositorio:
+  **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
+- Ubicarse en la carpeta playwright:
+  **cd MISW4103-issues
+  cd playwright**
+- configurar las variables de entorno con los parametros del sistema:
+  **GHOST_PAGE
+  USER_EMAIL
+  USER_PASSW**
+- Ejecutar comando para instalar las librerias:
+  **npm i**
+- Ejecutar comando para lanzar las pruebas:
+  **npx playwright test**
+  
+  Las imagenes con los resultados de las pruebas se pueden observar en la ruta **./results/**
