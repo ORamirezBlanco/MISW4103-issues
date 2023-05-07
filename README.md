@@ -157,20 +157,20 @@
 
 
 ## Ejecución de las pruebas utilizando playwright
-- Confirmar la utilizacion de node 14 (14.18.0)
-  node -v
-- Descargar el repositorio
-  git clone https://github.com/ORamirezBlanco/MISW4103-issues.git
-- Ubicarse en la carpeta playwright 
-  cd MISW4103-issues
-  cd playwright
+- Confirmar la utilizacion de node 14 (14.18.0):
+  **node -v**
+- Descargar el repositorio:
+  **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
+- Ubicarse en la carpeta playwright:
+  **cd MISW4103-issues
+  cd playwright**
 - configurar las variables de entorno con los parametros del sistema:
-  GHOST_PAGE
+  **GHOST_PAGE
   USER_EMAIL
-  USER_PASSW
-- Ejecutar comando para instalar las librerias
-  npm i
-- Ejecutar comando para lanzar las pruebas
-  npx playwright test
+  USER_PASSW**
+- Ejecutar comando para instalar las librerias:
+  **npm i**
+- Ejecutar comando para lanzar las pruebas:
+  **npx playwright test**
   
-  Las imagenes con los resultados de las pruebas se pueden observar en la ruta ./results/
+  Las imagenes con los resultados de las pruebas se pueden observar en la ruta **./results/**
