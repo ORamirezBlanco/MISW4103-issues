@@ -42,27 +42,26 @@ this.pageSettingsCancelButton = page.getByRole('button', { name: 'Cancel' });
 
         
         
-        this.pagePostFilterAll = page.getByText('All posts', { exact: true });
+this.pagePageFilterAll = page.getByText('All pages', { exact: true });
         
 
         
-
+this.pageUpdateButton =   page.getByRole('button', { name: 'Update' });    
+this.pageUpdateUnPublishOption = page.locator('.gh-publishmenu-radio-button');
+this.pageUpdateUnPublishConfirm = page.getByRole('button', { name: 'Unpublish', exact: true });
         
-        
+                        
+this.pageScheduledButton = page.getByRole('button', { name: 'Scheduled' });
+this.pageUnPublishConfirm = page.getByRole('button', { name: 'Unschedule', exact: true });
+               
        // this.postSettingsConfirmButton = page.getByRole('button', { name: 'Delete', exact: true });
         
-        this.postUpdateButton =   page.getByRole('button', { name: 'Update' });
-        this.postUpdateUnPublishOption = page.locator('.gh-publishmenu-radio-button');
-        this.postUpdateUnPublishConfirm = page.getByRole('button', { name: 'Unpublish', exact: true });
-        
-        this.postScheduledButton = page.getByRole('button', { name: 'Scheduled' });
-        this.postUnPublishConfirm = page.getByRole('button', { name: 'Unschedule', exact: true });
-
+          
 
         
     }
 
-     async draftPage( ) {
+     async draftPages( ) {
          await this.waitPlease(this.waitTime);
          await this.pagePageFilter.click();
          await this.waitPlease(this.waitTime);
@@ -89,11 +88,11 @@ this.pageSettingsCancelButton = page.getByRole('button', { name: 'Cancel' });
          return await this.page.$$(this.listElements);
      }
 
-    // async selectAllPosts(){
-    //     await this.waitPlease(this.waitTime);
-    //     await this.pagePostFilter.click()
-    //     await this.waitPlease(this.waitTime);
-    //     await this.pagePostFilterAll.click();
-    // }
+     async selectAllPages(){
+         await this.waitPlease(this.waitTime);
+         await this.pagePageFilter.click()
+         await this.waitPlease(this.waitTime);
+         await this.pagePageFilterAll.click();
+     }
 
 }

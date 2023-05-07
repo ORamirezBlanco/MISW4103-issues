@@ -42,6 +42,7 @@ test('Escenario 2', async ({ page }) => {
     await utils.waitPlease(1000);
     await utils.screenshot(post.pathFile, 'e2_04-post_editar_original.png');
 
+    const postTitleBase = await post.postTitle.inputValue();
 
     await post.postPublishButton.click();
     await utils.waitPlease(100);
@@ -67,7 +68,7 @@ test('Escenario 2', async ({ page }) => {
 
       let text = await i.innerText()
       text = text.replace(/[^A-Z0-9]/ig, '');
-      const textToValidate = post.newPostTitle.replace(/[^A-Z0-9]/ig, '');
+      const textToValidate = postTitleBase.replace(/[^A-Z0-9]/ig, '');
       if (text.startsWith(textToValidate)) {
         elementFound = true;
         await i.click();

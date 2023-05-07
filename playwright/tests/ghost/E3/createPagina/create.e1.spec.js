@@ -45,7 +45,7 @@ test('Escenario 1', async ({ page }) => {
   await utils.waitPlease(500);
   await utils.screenshot(pageObj.pathFile,'e1_05-page_listado_pages.png');
 
-  let pages =  await pageObj.draftPage();
+  let pages =  await pageObj.draftPages();
   await utils.screenshot(pageObj.pathFile,'e1_06-page_listado_pages_draft.png');
 
 

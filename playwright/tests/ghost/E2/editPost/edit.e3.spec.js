@@ -20,7 +20,6 @@ test('Escenario 3', async ({ page }) => {
   const post = new Post(page);
 
   post.pathFile = post.pathFile + 'E2/';
-  post.newPostTitle = 'POST EDITADO';
 
   await login.gotoLoginPage();
   await utils.waitPlease(100);
