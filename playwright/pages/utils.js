@@ -1,4 +1,4 @@
-exports.UtilsPage = class UtilsPage {
+exports.Utils = class Utils {
 
     constructor(page) {
         this.page = page;

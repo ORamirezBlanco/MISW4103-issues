@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../../pages/login';
-import { UtilsPage } from '../../../pages/utils';
-import { PostPage } from '../../../pages/post';
+import { test } from '@playwright/test';
+import {Login} from './../../../pages/login';
+import {Utils} from './../../../pages/utils';
+import {Post} from './../../../pages/post';
 
 
 
@@ -16,9 +16,9 @@ import { PostPage } from '../../../pages/post';
 
 test('Escenario 4', async ({ page }) => {
 
-  const login = new LoginPage(page);
-  const utils = new UtilsPage(page);
-  const post = new PostPage(page);
+  const login = new Login(page);
+  const utils = new Utils(page);
+  const post = new Post(page);
 
   post.pathFile = post.pathFile + 'E2/';
   post.newPostTitle = 'POST EDITADO';

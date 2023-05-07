@@ -1,8 +1,8 @@
-const { Utils } = require("./utils");
+const { UtilsPage } = require("./utils");
 
-exports.Post = class Post extends Utils {
+exports.Page = class Page extends UtilsPage {
 
-    newPostTitle = "Relojes";
+    newPostTitle = "Relojes Pages";
     newPostContent = "Relojes content";
     pathFile = './results/post/';
     listElements = 'li.gh-list-row.gh-posts-list-item';
