@@ -51,28 +51,36 @@ exports.PostPage = class PostPage extends UtilsPage {
     }
 
     async draftPost( ) {
+        await this.waitPlease(700);
         await this.pagePostFilter.click();
+        await this.waitPlease(700);
         await this.pagePostFilterDraft.click();
-        await this.waitPlease(500);
+        await this.waitPlease(700);
         return await this.page.$$(this.listElements);
     }
 
     async publishedPost( ) {
+        await this.waitPlease(700);
         await this.pagePostFilter.click();
+        await this.waitPlease(700);
         await this.pagePostFilterPublished.click();
-        await this.waitPlease(500);
+        await this.waitPlease(700);
         return await this.page.$$(this.listElements);
     }
 
     async scheduledPost( ) {
+        await this.waitPlease(700);
         await this.pagePostFilter.click();
+        await this.waitPlease(700);
         await this.pagePostFilterScheduled.click();
-        await this.waitPlease(500);
+        await this.waitPlease(700);
         return await this.page.$$(this.listElements);
     }
 
     async selectAllPosts(){
+        await this.waitPlease(700);
         await this.pagePostFilter.click()
+        await this.waitPlease(700);
         await this.pagePostFilterAll.click();
     }
 
