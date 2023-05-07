@@ -40,7 +40,7 @@
   - Escenario 4:
     - Ingreso al sistema
     - Creo una nueva página en borrador
-    - Verifico que se genere el id del post 
+    - Verifico que se genere el id del post / verifico que aparezca el botón borrar
 - Editar Post
   - Escenario 1:
     - Ingreso al sistema
@@ -92,7 +92,7 @@
   - Escenario 4:
     - Ingreso al sistema
     - Creo una nueva página en borrador
-    - Verifico que se genere el id de la pagina
+    - Verifico que se genere el id de la pagina / verifico que aparezca el botón borrar
 - Editar Página
   - Escenario 1:
     - Ingreso al sistema
