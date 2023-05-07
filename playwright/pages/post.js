@@ -8,7 +8,7 @@ exports.Post = class Post extends Utils {
     listElements = 'li.gh-list-row.gh-posts-list-item';
 
     statusFilter = 'div.gh-contentfilter-menu.gh-contentfilter-type';
-    
+
     waitTime = 500;
 
     constructor(page) {
@@ -19,11 +19,10 @@ exports.Post = class Post extends Utils {
         this.postTitle = page.locator('[placeholder="Post Title"]');
         this.postTitleConfirm = page.locator('css=div.koenig-editor__editor.__mobiledoc-editor.__has-no-content');
         this.postsBack = page.locator('a:has-text("Posts")');
-        // this.pagePostFilter = page.getByRole('button', { name: 'All posts' });
         this.pagePostFilter = page.locator(this.statusFilter);
-        
+
         this.pagePostFilterAll = page.getByText('All posts', { exact: true });
-        
+
 
         this.pagePostFilterDraft = page.getByText('Draft posts');
 
@@ -37,21 +36,22 @@ exports.Post = class Post extends Utils {
 
         this.postSettingsButton = page.getByRole('button', { name: 'Settings' });
         this.postSettingsDeleteButton = page.getByRole('button', { name: 'Delete post' });
-      //  this.postSettingsConfirmButton = page.getByRole('button', { name: 'Delete', exact: true });
+        this.postSettingsDeleteButtonConfirm = page.getByRole('button', { name: 'Delete', exact: true });
+
         this.postSettingsCancelButton = page.getByRole('button', { name: 'Cancel' });
 
-        this.postUpdateButton =   page.getByRole('button', { name: 'Update' });
+        this.postUpdateButton = page.getByRole('button', { name: 'Update' });
         this.postUpdateUnPublishOption = page.locator('.gh-publishmenu-radio-button');
         this.postUpdateUnPublishConfirm = page.getByRole('button', { name: 'Unpublish', exact: true });
-        
+
         this.postScheduledButton = page.getByRole('button', { name: 'Scheduled' });
         this.postUnPublishConfirm = page.getByRole('button', { name: 'Unschedule', exact: true });
 
 
-        
+
     }
 
-    async draftPost( ) {
+    async draftPost() {
         await this.waitPlease(this.waitTime);
         await this.pagePostFilter.click();
         await this.waitPlease(this.waitTime);
@@ -60,7 +60,7 @@ exports.Post = class Post extends Utils {
         return await this.page.$$(this.listElements);
     }
 
-    async publishedPost( ) {
+    async publishedPost() {
         await this.waitPlease(this.waitTime);
         await this.pagePostFilter.click();
         await this.waitPlease(this.waitTime);
@@ -69,7 +69,7 @@ exports.Post = class Post extends Utils {
         return await this.page.$$(this.listElements);
     }
 
-    async scheduledPost( ) {
+    async scheduledPost() {
         await this.waitPlease(this.waitTime);
         await this.pagePostFilter.click();
         await this.waitPlease(this.waitTime);
@@ -78,7 +78,7 @@ exports.Post = class Post extends Utils {
         return await this.page.$$(this.listElements);
     }
 
-    async selectAllPosts(){
+    async selectAllPosts() {
         await this.waitPlease(this.waitTime);
         await this.pagePostFilter.click()
         await this.waitPlease(this.waitTime);
