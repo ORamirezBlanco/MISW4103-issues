@@ -148,14 +148,18 @@
     - Borro la página
     - Verifico que la página no exista
   
-## Ejecución de las pruebas utilizando Kraken:
+## Ejecución de las pruebas utilizando Kraken (Ubuntu):
 - Instalar node 14
-- Ejecutar: npm install
-- Modificar features/web/step_definitions/properties.json con las credenciales de usuario
-- De ser necesario hacer un reemplazo en los features del la base de la URL donde se está ejecutando Ghost 
-- Ejecutar: npx kraken-node run
-
-
+- La herramienta requiere que se tenga ADB instalado para ejecutarse
+- Descargar el repositorio:
+  **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
+- Ubicarse en la carpeta kraken:
+  **cd MISW4103-issues/kraken**
+- Ejecutar: 
+  **npm install**
+- Modificar features/web/step_definitions/properties.json con las credenciales de usuario reemplazando <EMAIL> y <PASSWORD>
+- De ser necesario hacer un reemplazo en los features del la base de la URL donde se está ejecutando Ghost. Por defecto está configurado para ejecutarse contra http://localhost:2369
+- Ejecutar: **npx kraken-node run**
 ## Ejecución de las pruebas utilizando playwright
 - Confirmar la utilizacion de node 14 (14.18.0):
   **node -v**
