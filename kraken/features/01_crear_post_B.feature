@@ -1,4 +1,4 @@
-Feature: Crear post
+Feature: Crear Post
 
 @user2 @web
 Scenario: Ingreso al sistema
@@ -7,7 +7,7 @@ Scenario: Ingreso al sistema
           Publico el nuevo post 
           Vuelvo al listado de post
           Verifico que el post creado exista en la lista de post publicados
- Given I navigate to page "http://localhost:2369/ghost/#/editor/post/"
+ Given I navigate to page "http://localhost:2368/ghost/#/editor/post/"
  And I wait for 2 seconds
  When I enter email
  And I enter password

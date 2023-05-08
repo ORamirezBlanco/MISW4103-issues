@@ -1,4 +1,4 @@
-Feature: Borrar
+Feature: Borrar Post
 
 @user1 @web
 Scenario: Ingreso al sistema
@@ -6,7 +6,7 @@ Scenario: Ingreso al sistema
           Verifico que el post exista
           Borro el post
           Verifico que el post no exista
-  Given I navigate to page "http://localhost:2369/ghost/#/editor/post/"
+  Given I navigate to page "http://localhost:2368/ghost/#/editor/post/"
   And I wait for 2 seconds
   When I enter email
   And I enter password

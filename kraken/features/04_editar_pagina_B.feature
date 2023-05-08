@@ -1,4 +1,4 @@
-Feature: Editar una página
+Feature: Editar una Página
 
 @user1 @web
 Scenario: Ingreso al sistema
@@ -7,7 +7,7 @@ Scenario: Ingreso al sistema
           Navego a la nueva página
           Publico la página
           Verifico que la nueva página aparezca en el listado como publicada
-  Given I navigate to page "http://localhost:2369/ghost/#/editor/page/"
+  Given I navigate to page "http://localhost:2368/ghost/#/editor/page/"
   And I wait for 2 seconds
   When I enter email
   And I enter password

@@ -158,7 +158,7 @@
 - Ejecutar: 
   **npm install**
 - Modificar features/web/step_definitions/properties.json con las credenciales de usuario reemplazando <EMAIL> y <PASSWORD>
-- De ser necesario hacer un reemplazo en los features del la base de la URL donde se está ejecutando Ghost. Por defecto está configurado para ejecutarse contra http://localhost:2369
+- De ser necesario hacer un reemplazo en los features del la base de la URL donde se está ejecutando Ghost. Por defecto está configurado para ejecutarse contra http://localhost:2368
 - Ejecutar: **npx kraken-node run**
 ## Ejecución de las pruebas utilizando playwright
 - Confirmar la utilizacion de node 14 (14.18.0):

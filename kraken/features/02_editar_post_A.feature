@@ -1,4 +1,4 @@
-Feature: Editar post
+Feature: Editar Post
 
 @user1 @web
 Scenario: Ingreso al sistema
@@ -8,7 +8,7 @@ Scenario: Ingreso al sistema
           Edito el título del post
           Vuelvo a la lista de borradores
           Verifico que el título haya cambiado
-  Given I navigate to page "http://localhost:2369/ghost/#/editor/post/"
+  Given I navigate to page "http://localhost:2368/ghost/#/editor/post/"
   And I wait for 2 seconds
   When I enter email
   And I enter password

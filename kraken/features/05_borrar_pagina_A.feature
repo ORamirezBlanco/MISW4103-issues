@@ -1,13 +1,15 @@
-Feature: Borrar Post
+Feature: Borrar Página
 
 @user1 @web
-Scenario: Ingreso al sistema
-          Creo un nuevo post
-          Publico el post
-          Verifico que el post exista
-          Borro el post
-          Verifico que el post no exista
-  Given I navigate to page "http://localhost:2368/ghost/#/editor/post/"
+Scenario: Ingresar al sistema
+          Crear una Página y publicarla
+          Volver a la lista de Páginas
+          Abrir la Página y el menú lateral
+          Dar clic en el botón Delete page
+          Dar clic en el modal al botón Delete
+          Verificar que no exista la Página
+
+  Given I navigate to page "http://localhost:2368/ghost/#/editor/page"
   And I wait for 2 seconds
   When I enter email
   And I enter password
@@ -21,15 +23,14 @@ Scenario: Ingreso al sistema
   And I wait for 1 seconds
   And I click button "Publish"
   And I wait for 1 seconds
-  And I click link "Posts"
+  And I click link "Pages"  
   And I wait for 1 seconds
-  And I click link "Published"
+  And I click a new "page"
   And I wait for 1 seconds
-  And I click a new "post"
   And I open a lateral menu
   And I wait for 1 seconds
   And I click delete button
   And I wait for 1 seconds
   And I click button "Delete"
   And I wait for 1 seconds
-  Then I check not exists a new "post"
+  Then I check not exists a new "page"

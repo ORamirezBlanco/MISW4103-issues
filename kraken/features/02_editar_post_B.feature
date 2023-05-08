@@ -1,4 +1,4 @@
-Feature: Editar post
+Feature: Editar Post
 
 @user1 @web
 Scenario: Ingreso al sistema
@@ -8,7 +8,7 @@ Scenario: Ingreso al sistema
           Publico el post
           Voy a la lista de posts publicados
           Verifico que el post editado exista
-  Given I navigate to page "http://localhost:2369/ghost/#/editor/post/"
+  Given I navigate to page "http://localhost:2368/ghost/#/editor/post/"
   And I wait for 2 seconds
   When I enter email
   And I enter password

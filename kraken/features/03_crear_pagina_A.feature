@@ -1,10 +1,10 @@
-Feature: Crear una página
+Feature: Crear una Página
 
 @user1 @web
 Scenario: Ingreso al sistema
           Creo una nueva página en borrador
           Verifico que exista la pagina creada como borrador
-  Given I navigate to page "http://localhost:2369/ghost/#/editor/page/"
+  Given I navigate to page "http://localhost:2368/ghost/#/editor/page/"
   And I wait for 2 seconds
   When I enter email
   And I enter password
