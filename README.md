@@ -168,7 +168,7 @@
 - Ubicarse en la carpeta playwright:
   **cd MISW4103-issues** y después **cd playwright**
 - configurar las variables de entorno en el archivo **.env** que se encuentra en el directorio raiz con los parametros del sistema:
-  **GHOST_PAGE, USER_EMAIL, USER_PASSW**
+  **GHOST_PAGE, USER_EMAIL, USER_PASSW**, cambiar para USER_EMAIL el valor "<<user_email>>" y para USER_PASSW el valor "<<user_password>>"
 - Ejecutar comando para instalar las librerias:
   **npm i**
 - Ejecutar comando para lanzar las pruebas:
