@@ -166,12 +166,9 @@
 - Descargar el repositorio:
   **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
 - Ubicarse en la carpeta playwright:
-  **cd MISW4103-issues
-  cd playwright**
+  **cd MISW4103-issues** y después **cd playwright**
 - configurar las variables de entorno en el archivo **.env** que se encuentra en el directorio raiz con los parametros del sistema:
-  **GHOST_PAGE
-  USER_EMAIL
-  USER_PASSW**
+  **GHOST_PAGE, USER_EMAIL, USER_PASSW**
 - Ejecutar comando para instalar las librerias:
   **npm i**
 - Ejecutar comando para lanzar las pruebas:
