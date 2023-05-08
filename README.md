@@ -149,6 +149,7 @@
     - Verifico que la página no exista
   
 ## Ejecución de las pruebas utilizando Kraken (Ubuntu):
+- Es necesario que la aplicación Ghost v3.41.1 se este ejecutando y su sistema sea alcanzable desde la maquina que se van a ejecutar las pruebas
 - Instalar node 14
 - La herramienta requiere que se tenga ADB instalado para ejecutarse
 - Descargar el repositorio:
