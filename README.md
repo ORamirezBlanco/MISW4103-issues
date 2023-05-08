@@ -175,6 +175,6 @@
   **npx playwright test**
 
 
-Las imagenes con los resultados de las pruebas se pueden observar en la ruta **./results/**
+  Las imagenes con los resultados de las pruebas se pueden observar en la ruta **./results/**
 
-las estadisticas con los resultados de las pruebas se encuentran en la ruta **./playwright-report/index.html**
+  las estadisticas con los resultados de las pruebas se encuentran en la ruta **./playwright-report/index.html**
