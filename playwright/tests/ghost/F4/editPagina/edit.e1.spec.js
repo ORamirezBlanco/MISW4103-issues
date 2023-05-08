@@ -1,15 +1,16 @@
 import { test } from '@playwright/test';
-import {Login} from './../../../../pages/login';
-import {Utils} from './../../../../pages/utils';
-import {Page} from './../../../../pages/page';
-
+import {Login} from '../../../../pages/login';
+import {Utils} from '../../../../pages/utils';
+import {Page} from '../../../../pages/page';
 
 // Escenario 1:
-// -	Loguearse al sistema
-// -	Seleccionar los que están en draft
-// -	Cambiar el titulo del primer page
-// -	Volver
-// -	Verificar que cambie el titulo
+
+//     Ingreso al sistema
+//     Creo una nueva página como borrador
+//     Vuelvo al listado de página
+//     Navego a la nueva página
+//     Edito el titulo de la página
+//     Verifico que en el listado el título esté editado
 
 test('Escenario 1', async ({ page }) => {
 
@@ -17,8 +18,7 @@ test('Escenario 1', async ({ page }) => {
   const utils = new Utils(page);
   const pageObj = new Page(page);
 
-  pageObj.pathFile = pageObj.pathFile + 'E4/';
-  pageObj.newPageTitle = 'PAGINA EDITADA';
+  pageObj.pathFile = pageObj.pathFile + 'F4/';
 
   await login.gotoLoginPage();
   await utils.waitPlease(100);
@@ -31,35 +31,37 @@ test('Escenario 1', async ({ page }) => {
   await pageObj.pagesLink.click();
   await utils.screenshot(pageObj.pathFile, 'e1_02-page_listado.png');
 
+  await pageObj.createPage('e1_',3);
+  await pageObj.backPage('e1_',5);
 
   // page en draft
   let pages = await pageObj.draftPages();
-  await utils.screenshot(pageObj.pathFile, 'e1_03-page_listado_pages_draft.png');
+  await utils.screenshot(pageObj.pathFile, 'e1_06-page_listado_pages_draft.png');
+
+  pageObj.newPageTitle = 'PAGINA EDITADA';
 
   if (pages.length > 0) {
     await pages[0].click();
     await utils.waitPlease(1000);
-    await utils.screenshot(pageObj.pathFile, 'e1_04-page_editar_original.png');
+    await utils.screenshot(pageObj.pathFile, 'e1_07-page_editar_original.png');
     // colocar un titulo al nuevo page
     await pageObj.pageTitle.fill(pageObj.newPageTitle);
     await pageObj.pageTitleConfirm.click();
     await utils.waitPlease(1000);
-    await utils.screenshot(pageObj.pathFile, 'e1_05-page_editar_diligenciado.png');
+    await utils.screenshot(pageObj.pathFile, 'e1_08-page_editar_diligenciado.png');
 
     // hacer clic para volver a los page y dejarlo en draft
     await pageObj.pagesBack.first().click();
     await utils.waitPlease(500);
     await pageObj.selectAllPages();
     await utils.waitPlease(500);
-    await utils.screenshot(pageObj.pathFile, 'e1_06-page_listado_pages.png');
+    await utils.screenshot(pageObj.pathFile, 'e1_09-page_listado_pages.png');
 
     pages = await pageObj.draftPages();
-    await utils.screenshot(pageObj.pathFile, 'e1_07-page_listado_pages_draft.png');
-
+    await utils.screenshot(pageObj.pathFile, 'e1_10-page_listado_pages_draft.png');
 
     let elementFound = false;
     for (let i of pages) {
-
       let text = await i.innerText()
       text = text.replace(/[^A-Z0-9]/ig, '');
       const textToValidate = pageObj.newPageTitle.replace(/[^A-Z0-9]/ig, '');
@@ -67,13 +69,9 @@ test('Escenario 1', async ({ page }) => {
         elementFound = true;
         await i.click();
         await utils.waitPlease(500);
-        await utils.screenshot(pageObj.pathFile, 'e1_08-page_draft_detalle.png');
+        await utils.screenshot(pageObj.pathFile, 'e1_11-page_draft_detalle.png');
         break;
       }
     }
   }
-
-
-
-
 });

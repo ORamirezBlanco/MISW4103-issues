@@ -3,14 +3,13 @@ import {Login} from '../../../../pages/login';
 import {Utils} from '../../../../pages/utils';
 import {Page} from '../../../../pages/page';
 
+// Escenario 3:
 
-// Escenario 1:
-// -	Loguearse al sistema
-// -	Seleccionar pagina publicado
-// -	Borrarlo
-// -	Validar
-
-
+//     Ingreso al sistema
+//     Creo una nueva pagina como publicada
+//     Verifico que la pagina exista
+//     Borro la página
+//     Verifico que la página no exista
 
 test('Escenario 3', async ({ page }) => {
 
@@ -18,7 +17,7 @@ test('Escenario 3', async ({ page }) => {
   const utils = new Utils(page);
   const pageObj = new Page(page);
 
-  pageObj.pathFile = pageObj.pathFile + 'E5/';
+  pageObj.pathFile = pageObj.pathFile + 'F5/';
 
   await login.gotoLoginPage();
   await utils.waitPlease(100);
@@ -31,32 +30,29 @@ test('Escenario 3', async ({ page }) => {
   await pageObj.pagesLink.click();
   await utils.screenshot(pageObj.pathFile, 'e3_02-page_listado.png');
 
+  await pageObj.createPage('e3_',3);
+  await pageObj.publishPage('e3_',5);
+  await pageObj.backPage('e3_', 7);
 
   // page en publish
   let pages = await pageObj.publishedPages();
-  await utils.screenshot(pageObj.pathFile, 'e3_03-page_listado_pages_publish.png');
+  await utils.screenshot(pageObj.pathFile, 'e3_08-page_listado_pages_publish.png');
 
   if (pages.length > 0) {
     await pages[0].click();
     await utils.waitPlease(1000);
-    await utils.screenshot(pageObj.pathFile, 'e3_04-page_editar_original.png');
+    await utils.screenshot(pageObj.pathFile, 'e3_09-page_editar_original.png');
 
     await pageObj.pageSettingsButton.click();
     await utils.waitPlease(500);
-    await utils.screenshot(pageObj.pathFile, 'e3_05-page_menu_borrar.png');
+    await utils.screenshot(pageObj.pathFile, 'e3_10-page_menu_borrar.png');
 
     await pageObj.pageSettingsDeleteButton.first().click();
     await utils.waitPlease(500);
-    await utils.screenshot(pageObj.pathFile, 'e3_06-page_menu_borrar_confirmar.png');
+    await utils.screenshot(pageObj.pathFile, 'e3_11-page_menu_borrar_confirmar.png');
 
     await pageObj.pageSettingsDeleteButtonConfirm.click();
     await utils.waitPlease(500);
-    await utils.screenshot(pageObj.pathFile, 'e3_07-page_menu_borrar_borrad.png');
-
-
+    await utils.screenshot(pageObj.pathFile, 'e3_12-page_menu_borrar_borrad.png');
   }
-
-
-
-
 });

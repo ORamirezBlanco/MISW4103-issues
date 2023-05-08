@@ -3,11 +3,13 @@ import {Login} from './../../../../pages/login';
 import {Utils} from './../../../../pages/utils';
 import {Post} from './../../../../pages/post';
 
-
 // Escenario 1:
-// -	Loguearse al sistema
-// -	Ingresar Titulo
-// -	Verificar que este en la lista con draft
+
+//     Ingreso al sistema
+//     Navego a crear post
+//     Ingreso el titulo del nuevo post
+//     Vuelvo al listado de post
+//     Verifico que el post creado exista en la lista de post borradores
 
 test('Escenario 1', async ({ page }) => {
 
@@ -15,7 +17,7 @@ test('Escenario 1', async ({ page }) => {
   const utils = new Utils(page);
   const post = new Post(page);
 
-  post.pathFile = post.pathFile + 'E1/';
+  post.pathFile = post.pathFile + 'F1/';
 
   await login.gotoLoginPage();
   await utils.waitPlease(100);
@@ -28,30 +30,14 @@ test('Escenario 1', async ({ page }) => {
   await post.postsLink.click();
   await utils.screenshot(post.pathFile,'e1_02-post_listado.png');
 
-
-  // hacer clic para crear un nuevo post
-  await post.postNew.first().click();
-  await utils.screenshot(post.pathFile,'e1_03-post_crear_vacio.png');
-
-  // colocar un titulo al nuevo post
-  await post.postTitle.fill(post.newPostTitle);
-  await post.postTitleConfirm.click();
-  await utils.waitPlease(1000);
-  await utils.screenshot(post.pathFile,'e1_04-post_crear_diligenciado.png');
-
-
-  // hacer clic para volver a los post y dejarlo en draft
-  await post.postsBack.first().click();
-  await utils.waitPlease(500);
-  await utils.screenshot(post.pathFile,'e1_05-post_listado_posts.png');
+  await post.createPost('e1_', 3);
+  await post.backPost('e1_', 5);
 
   let post_drafts =  await post.draftPost();
   await utils.screenshot(post.pathFile,'e1_06-post_listado_posts_draft.png');
 
-
   let elementFound = false;
   for (let i of post_drafts) {
-
     let text = await i.innerText()
     text = text.replace(/[^A-Z0-9]/ig, '');
     if (text.startsWith( post.newPostTitle )) {
@@ -62,5 +48,4 @@ test('Escenario 1', async ({ page }) => {
       break;
     }
   }
-
 });

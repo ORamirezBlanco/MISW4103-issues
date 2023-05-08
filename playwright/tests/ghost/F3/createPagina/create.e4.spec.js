@@ -1,13 +1,13 @@
 import { test } from '@playwright/test';
-import {Login} from './../../../../pages/login';
-import {Utils} from './../../../../pages/utils';
-import {Page} from './../../../../pages/page';
-
+import {Login} from '../../../../pages/login';
+import {Utils} from '../../../../pages/utils';
+import {Page} from '../../../../pages/page';
 
 // Escenario 4:
-// -	Loguearse al sistema
-// -	Ingresar Titulo
-// -	Validar que aparezca el botón borrar
+
+//     Ingreso al sistema
+//     Creo una nueva página en borrador
+//     Verifico que se genere el id de la pagina / verifico que aparezca el botón borrar
 
 test('Escenario 4', async ({ page }) => {
 
@@ -15,7 +15,7 @@ test('Escenario 4', async ({ page }) => {
   const utils = new Utils(page);
   const pagesObj = new Page(page);
 
-  pagesObj.pathFile = pagesObj.pathFile + 'E3/';
+  pagesObj.pathFile = pagesObj.pathFile + 'F3/';
 
   await login.gotoLoginPage();
   await utils.waitPlease(100);
@@ -28,7 +28,6 @@ test('Escenario 4', async ({ page }) => {
   await pagesObj.pagesLink.click();
   await utils.screenshot(pagesObj.pathFile, 'e4_02-page_listado.png');
 
-
   // hacer clic para crear un nuevo page
   await pagesObj.pageNew.first().click();
   await utils.screenshot(pagesObj.pathFile, 'e4_03-page_crear_vacio.png');
@@ -39,10 +38,6 @@ test('Escenario 4', async ({ page }) => {
   await utils.waitPlease(1000);
   await utils.screenshot(pagesObj.pathFile, 'e4_04-page_crear_diligenciado.png');
 
-  /////////// 
-
-
-  
   await pagesObj.pageSettingsButton.click();
   await utils.waitPlease(1000);
   await utils.screenshot(pagesObj.pathFile, 'e4_05-page_settings.png');

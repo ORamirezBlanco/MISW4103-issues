@@ -1,13 +1,14 @@
 import { test } from '@playwright/test';
-import {Login} from './../../../../pages/login';
-import {Utils} from './../../../../pages/utils';
-import {Post} from './../../../../pages/post';
-
+import {Login} from '../../../../pages/login';
+import {Utils} from '../../../../pages/utils';
+import {Post} from '../../../../pages/post';
 
 // Escenario 4:
-// -	Loguearse al sistema
-// -	Ingresar Titulo
-// -	Validar que aparezca el botón borrar
+
+//     Ingreso al sistema
+//     Creo una nueva página en borrador
+//     Verifico que se genere el id del post / verifico que aparezca el botón borrar
+
 
 test('Escenario 4', async ({ page }) => {
 
@@ -15,7 +16,7 @@ test('Escenario 4', async ({ page }) => {
   const utils = new Utils(page);
   const post = new Post(page);
 
-  post.pathFile = post.pathFile + 'E1/';
+  post.pathFile = post.pathFile + 'F1/';
 
   await login.gotoLoginPage();
   await utils.waitPlease(100);
@@ -39,10 +40,6 @@ test('Escenario 4', async ({ page }) => {
   await utils.waitPlease(1000);
   await utils.screenshot(post.pathFile, 'e4_04-post_crear_diligenciado.png');
 
-  /////////// 
-
-
-  
   await post.postSettingsButton.click();
   await utils.waitPlease(1000);
   await utils.screenshot(post.pathFile, 'e4_05-post_settings.png');
@@ -54,5 +51,4 @@ test('Escenario 4', async ({ page }) => {
   await post.postSettingsCancelButton.click();
   await utils.waitPlease(1000);
   await utils.screenshot(post.pathFile, 'e4_07-post_settings_cancel.png');
-
 });

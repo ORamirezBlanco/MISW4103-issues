@@ -1,18 +1,17 @@
 import { test } from '@playwright/test';
-import {Login} from './../../../../pages/login';
-import {Utils} from './../../../../pages/utils';
-import {Post} from './../../../../pages/post';
+import {Login} from '../../../../pages/login';
+import {Utils} from '../../../../pages/utils';
+import {Post} from '../../../../pages/post';
 
+// Escenario 4:
 
-
-// Escenario 4: 
-// -	Loguearse al sistema
-// -	Seleccionar los que están en programados scheduled
-// -	Pasarlo a draft
-// -	Volver
-// -	Verificar que cambio el estado
-
-
+//     Ingreso al sistema
+//     Creo un post como calendarizado
+//     Vuelvo a la lista de calendarizados
+//     Selecciono el nuevo post
+//     Edito el post como borrador
+//     Vuelvo a la lista de borradores
+//     Verifico que el post existe como borrador
 
 test('Escenario 4', async ({ page }) => {
 
@@ -20,7 +19,7 @@ test('Escenario 4', async ({ page }) => {
   const utils = new Utils(page);
   const post = new Post(page);
 
-  post.pathFile = post.pathFile + 'E2/';
+  post.pathFile = post.pathFile + 'F2/';
   post.newPostTitle = 'POST EDITADO';
 
   await login.gotoLoginPage();
@@ -34,44 +33,43 @@ test('Escenario 4', async ({ page }) => {
   await post.postsLink.click();
   await utils.screenshot(post.pathFile, 'e4_02-post_listado.png');
 
+  await post.createPost('e4_', 3);
+  await post.schedulePost('e4_', 5);
+  await post.backPost('e4_', 8);
 
   // post en publish
   let posts = await post.scheduledPost();
-  await utils.screenshot(post.pathFile, 'e4_03-post_listado_posts_schedule.png');
+  await utils.screenshot(post.pathFile, 'e4_09-post_listado_posts_schedule.png');
 
   if (posts.length > 0) {
     await posts[0].click();
     await utils.waitPlease(1000);
-    await utils.screenshot(post.pathFile, 'e4_04-post_editar_original.png');
+    await utils.screenshot(post.pathFile, 'e4_10-post_editar_original.png');
 
     const postTitleBase = await post.postTitle.inputValue();
  
     await post.postScheduledButton.click();
     await utils.waitPlease(100);
-    await utils.screenshot(post.pathFile, 'e4_05-post_menu_actualizar_schedule.png');
+    await utils.screenshot(post.pathFile, 'e4_11-post_menu_actualizar_schedule.png');
 
     await post.postUpdateUnPublishOption.first().click();
     await utils.waitPlease(100);
-    await utils.screenshot(post.pathFile, 'e4_06-post_menu_actualizar_unpublicar.png');
+    await utils.screenshot(post.pathFile, 'e4_12-post_menu_actualizar_unpublicar.png');
 
     await post.postUnPublishConfirm.click();
     await utils.waitPlease(100);
-    await utils.screenshot(post.pathFile, 'e4_07-post_menu_actualizar_unpublicar_confirmar.png');
-
+    await utils.screenshot(post.pathFile, 'e4_13-post_menu_actualizar_unpublicar_confirmar.png');
 
     // hacer clic para volver a los post 
     await post.postsBack.first().click();
     await utils.waitPlease(500);
-    await utils.screenshot(post.pathFile, 'e4_08-post_listado_posts.png');
-
+    await utils.screenshot(post.pathFile, 'e4_14-post_listado_posts.png');
 
     posts = await post.draftPost();
-    await utils.screenshot(post.pathFile, 'e4_09-post_listado_posts_draft.png');
-
+    await utils.screenshot(post.pathFile, 'e4_15-post_listado_posts_draft.png');
 
     let elementFound = false;
     for (let i of posts) {
-
       let text = await i.innerText()
       text = text.replace(/[^A-Z0-9]/ig, '');
       const textToValidate = postTitleBase.replace(/[^A-Z0-9]/ig, '');
@@ -79,15 +77,9 @@ test('Escenario 4', async ({ page }) => {
         elementFound = true;
         await i.click();
         await utils.waitPlease(1000);
-        await utils.screenshot(post.pathFile, 'e4_10-post_un_published_detalle.png');
+        await utils.screenshot(post.pathFile, 'e4_15-post_un_published_detalle.png');
         break;
       }
     }
-
-
   }
-
-
-
-
 });

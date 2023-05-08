@@ -1,17 +1,16 @@
 import { test } from '@playwright/test';
-import {Login} from './../../../../pages/login';
-import {Utils} from './../../../../pages/utils';
-import {Page} from './../../../../pages/page';
-
+import {Login} from '../../../../pages/login';
+import {Utils} from '../../../../pages/utils';
+import {Page} from '../../../../pages/page';
 
 // Escenario 3:
-// -	Loguearse al sistema
-// -	Seleccionar los que están en publicado
-// -	Pasarlo a drafo
-// -	Volver
-// -	Verificar que cambio el estado
 
-
+//     Ingreso al sistema
+//     Creo una nueva página como publicada
+//     Vuelvo al listado de página
+//     Navego a la nueva página
+//     Edito la página como borrador
+//     Verifico que la nueva página aparezca en el listado como borrador
 
 test('Escenario 3', async ({ page }) => {
 
@@ -19,7 +18,7 @@ test('Escenario 3', async ({ page }) => {
   const utils = new Utils(page);
   const pageObj = new Page(page);
 
-  pageObj.pathFile = pageObj.pathFile + 'E4/';
+  pageObj.pathFile = pageObj.pathFile + 'F4/';
 
   await login.gotoLoginPage();
   await utils.waitPlease(100);
@@ -32,44 +31,41 @@ test('Escenario 3', async ({ page }) => {
   await pageObj.pagesLink.click();
   await utils.screenshot(pageObj.pathFile, 'e3_02-page_listado.png');
 
+  await pageObj.createPage('e3_',3);
+  await pageObj.publishPage('e3_',5);
+  await pageObj.backPage('e3_', 7);
 
   // page en publish
   let pages = await pageObj.publishedPages();
-  await utils.screenshot(pageObj.pathFile, 'e3_03-page_listado_pages_publish.png');
+  await utils.screenshot(pageObj.pathFile, 'e3_08-page_listado_pages_publish.png');
 
   if (pages.length > 0) {
     await pages[0].click();
     await utils.waitPlease(1000);
-    await utils.screenshot(pageObj.pathFile, 'e3_04-page_editar_original.png');
+    await utils.screenshot(pageObj.pathFile, 'e3_09-page_editar_original.png');
 
     const pageTitleBase = await pageObj.pageTitle.inputValue();
 
     await pageObj.pageUpdateButton.click();
     await utils.waitPlease(100);
-    await utils.screenshot(pageObj.pathFile, 'e3_05-page_menu_actualizar.png');
+    await utils.screenshot(pageObj.pathFile, 'e3_10-page_menu_actualizar.png');
 
     await pageObj.pageUpdateUnPublishOption.first().click();
     await utils.waitPlease(100);
-    await utils.screenshot(pageObj.pathFile, 'e3_06-page_menu_actualizar_unpublicar.png');
+    await utils.screenshot(pageObj.pathFile, 'e3_11-page_menu_actualizar_unpublicar.png');
 
     await pageObj.pageUpdateUnPublishConfirm.click();
     await utils.waitPlease(100);
-    await utils.screenshot(pageObj.pathFile, 'e3_07-page_menu_actualizar_unpublicar_confirmar.png');
-
+    await utils.screenshot(pageObj.pathFile, 'e3_12-page_menu_actualizar_unpublicar_confirmar.png');
 
     // hacer clic para volver a los page 
-    await pageObj.pagesBack.first().click();
-    await utils.waitPlease(500);
-    await utils.screenshot(pageObj.pathFile, 'e3_08-page_listado_pages.png');
-
+    await pageObj.backPage('e3_', 13);
 
     pages = await pageObj.draftPages();
-    await utils.screenshot(pageObj.pathFile, 'e3_09-page_listado_pages_draft.png');
-
+    await utils.screenshot(pageObj.pathFile, 'e3_14-page_listado_pages_draft.png');
 
     let elementFound = false;
     for (let i of pages) {
-
       let text = await i.innerText()
       text = text.replace(/[^A-Z0-9]/ig, '');
       const textToValidate = pageTitleBase.replace(/[^A-Z0-9]/ig, '');
@@ -77,15 +73,9 @@ test('Escenario 3', async ({ page }) => {
         elementFound = true;
         await i.click();
         await utils.waitPlease(1000);
-        await utils.screenshot(pageObj.pathFile, 'e3_10-page_un_published_detalle.png');
+        await utils.screenshot(pageObj.pathFile, 'e3_15-page_un_published_detalle.png');
         break;
       }
     }
-
-
   }
-
-
-
-
 });
