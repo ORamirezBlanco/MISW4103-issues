@@ -73,46 +73,39 @@ exports.Post = class Post extends Utils {
     }
 
     async createPost(esc, i) {
-        // hacer clic para crear un nuevo post
         await this.postNew.first().click();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_vacio.png');
 
-        // colocar un titulo al nuevo post
         await this.postTitle.fill(this.newPostTitle);
         await this.postTitleConfirm.click();
-        await this.waitPlease(1000);
+        await this.waitPlease(this.waitTime);
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_diligenciado.png');
-
     }
     
     async backPost(esc, i) {
-        // hacer clic para volver a los post y dejarlo en draft
         await this.postsBack.first().click();
-        await this.waitPlease(500);
+        await this.waitPlease(this.waitTime);
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_listado_posts.png');
     }
 
     async publishPost(esc, i) {
         await this.postPublishButton.click();
-        await this.waitPlease(100);
+        await this.waitPlease(this.waitTime);
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_publish_menu.png');
 
         await this.postPublishConfirm.click();
-        await this.waitPlease(100);
+        await this.waitPlease(this.waitTime);
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_publish_confirm.png');
     }
 
     async schedulePost(esc, i) {
         await this.postPublishButton.click();
-        await this.waitPlease(100);
+        await this.waitPlease(this.waitTime);
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_publish_menu.png');
 
-        /////////
-
         await this.pagePostScheduleCheck.click();
-        await this.waitPlease(100);
+        await this.waitPlease(this.waitTime);
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_publish_schedule_select.png');
-        // await page.locator('div:nth-child(2) > .gh-publishmenu-radio-button').click();
 
         await this.pagePostScheduleConfirm.click();
         await this.waitPlease(100);
