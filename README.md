@@ -170,6 +170,7 @@
   **cd MISW4103-issues** y después **cd playwright**
 - configurar las variables de entorno en el archivo **.env** que se encuentra en el directorio raiz con los parametros del sistema:
   **GHOST_PAGE, USER_EMAIL, USER_PASSW**, cambiar para USER_EMAIL el valor "<<user_email>>" y para USER_PASSW el valor "<<user_password>>" y GHOST_PAGE de ser necesario
+- Configurar en el archivo **playwright.config.js** que se encuentra en el directorio raiz el arreglo **projects** para adicionar o retirar navegadores en la ejecucion de las pruebas.
 - Ejecutar comando para instalar las librerias:
   **npm install**
 - Ejecutar comando para lanzar las pruebas:
