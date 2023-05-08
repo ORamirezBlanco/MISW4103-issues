@@ -168,7 +168,7 @@
 - Ubicarse en la carpeta playwright:
   **cd MISW4103-issues
   cd playwright**
-- configurar las variables de entorno con los parametros del sistema:
+- configurar las variables de entorno en el archivo **.env** que se encuentra en el directorio raiz con los parametros del sistema:
   **GHOST_PAGE
   USER_EMAIL
   USER_PASSW**
