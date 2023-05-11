@@ -1,7 +1,5 @@
 import { test } from '@playwright/test';
-import {Login} from '../../../../pages/login';
-import {Utils} from '../../../../pages/utils';
-import {Post} from '../../../../pages/post';
+import {Service} from './../../../../pages/service';
 
 // Escenario 3:
 
@@ -15,9 +13,11 @@ import {Post} from '../../../../pages/post';
 
 test('Escenario 3', async ({ page }) => {
 
-  const login = new Login(page);
-  const utils = new Utils(page);
-  const post = new Post(page);
+  const service = new Service(page);
+
+  const login = service.login;
+  const utils = service.utils;
+  const post = service.post;
 
   post.pathFile = post.pathFile + 'F2/';
 

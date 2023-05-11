@@ -1,7 +1,5 @@
 import { test } from '@playwright/test';
-import {Login} from '../../../../pages/login';
-import {Utils} from '../../../../pages/utils';
-import {Page} from '../../../../pages/page';
+import {Service} from './../../../../pages/service';
 
 // Escenario 3:
 
@@ -12,9 +10,11 @@ import {Page} from '../../../../pages/page';
 
 test('Escenario 3', async ({ page }) => {
 
-  const login = new Login(page);
-  const utils = new Utils(page);
-  const pageObj = new Page(page);
+  const service = new Service(page);
+
+  const login = service.login;
+  const utils = service.utils;
+  const pageObj = service.pageObj;
 
   pageObj.pathFile = pageObj.pathFile + 'F3/';
 
