@@ -77,7 +77,7 @@ test('Escenario 4', async ({ page }) => {
         elementFound = true;
         await i.click();
         await utils.waitPlease(1000);
-        await utils.screenshot(post.pathFile, 'e4_15-post_un_published_detalle.png');
+        await utils.screenshot(post.pathFile, 'e4_16-post_un_published_detalle.png');
         break;
       }
     }

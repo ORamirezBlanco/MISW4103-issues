@@ -1,7 +1,5 @@
 
-import path from 'path';
-
-exports.Login = class Login {
+exports.Login314 = class Login314 {
 
     constructor(page) {
         this.page = page;
