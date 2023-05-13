@@ -1,0 +1,24 @@
+{
+    "urlBefore":"http://localhost:2369/",
+    "urlAfter":"http://localhost:3002/",
+    "scenarioName":"createPost_01",
+    "beforePath":"./tests/test_01_v3.41",
+    "afterPath":"./tests/test_01_v4.44",
+    "options":{
+        "output": {
+            "errorColor": {
+                "red": 255,
+                "green": 0,
+                "blue": 255
+            },
+            "errorType": "movement",
+            "largeImageThreshold": 1200,
+            "useCrossOrigin": false,
+            "outputDiff": true
+        },
+        "scaleToSameSize": true,
+        "ignore": "antialiasing"
+    },
+    "viewportHeight":600, 
+    "viewportWidth":800
+}
