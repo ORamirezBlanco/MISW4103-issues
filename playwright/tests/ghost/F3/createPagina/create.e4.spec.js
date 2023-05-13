@@ -1,7 +1,5 @@
 import { test } from '@playwright/test';
-import {Login} from '../../../../pages/login';
-import {Utils} from '../../../../pages/utils';
-import {Page} from '../../../../pages/page';
+import {Service} from './../../../../pages/service';
 
 // Escenario 4:
 
@@ -11,43 +9,45 @@ import {Page} from '../../../../pages/page';
 
 test('Escenario 4', async ({ page }) => {
 
-  const login = new Login(page);
-  const utils = new Utils(page);
-  const pagesObj = new Page(page);
+  const service = new Service(page);
 
-  pagesObj.pathFile = pagesObj.pathFile + 'F3/';
+  const login = service.login;
+  const utils = service.utils;
+  const pageObj = service.pageObj;
+
+  pageObj.pathFile = pageObj.pathFile + 'F3/';
 
   await login.gotoLoginPage();
   await utils.waitPlease(100);
-  await utils.screenshot(pagesObj.pathFile, 'e4_00-page_login.png');
+  await utils.screenshot(pageObj.pathFile, 'e4_00-page_login.png');
   await login.login();
   await utils.waitPlease(1000);
-  await utils.screenshot(pagesObj.pathFile, 'e4_01-page_principal.png');
+  await utils.screenshot(pageObj.pathFile, 'e4_01-page_principal.png');
 
   // Hacer clic en page para ver el listado de todos los page
-  await pagesObj.pagesLink.click();
-  await utils.screenshot(pagesObj.pathFile, 'e4_02-page_listado.png');
+  await pageObj.pagesLink.click();
+  await utils.screenshot(pageObj.pathFile, 'e4_02-page_listado.png');
 
   // hacer clic para crear un nuevo page
-  await pagesObj.pageNew.first().click();
-  await utils.screenshot(pagesObj.pathFile, 'e4_03-page_crear_vacio.png');
+  await pageObj.pageNew.first().click();
+  await utils.screenshot(pageObj.pathFile, 'e4_03-page_crear_vacio.png');
 
   // colocar un titulo al nuevo page
-  await pagesObj.pageTitle.fill(pagesObj.newPageTitle);
-  await pagesObj.pageTitleConfirm.click();
+  await pageObj.pageTitle.fill(pageObj.newPageTitle);
+  await pageObj.pageTitleConfirm.click();
   await utils.waitPlease(1000);
-  await utils.screenshot(pagesObj.pathFile, 'e4_04-page_crear_diligenciado.png');
+  await utils.screenshot(pageObj.pathFile, 'e4_04-page_crear_diligenciado.png');
 
-  await pagesObj.pageSettingsButton.click();
+  await pageObj.pageSettingsButton.click();
   await utils.waitPlease(1000);
-  await utils.screenshot(pagesObj.pathFile, 'e4_05-page_settings.png');
+  await utils.screenshot(pageObj.pathFile, 'e4_05-page_settings.png');
   
-  await pagesObj.pageSettingsDeleteButton.click();
+  await pageObj.pageSettingsDeleteButton.click();
   await utils.waitPlease(1000);
-  await utils.screenshot(pagesObj.pathFile, 'e4_06-page_settings_delete.png');
+  await utils.screenshot(pageObj.pathFile, 'e4_06-page_settings_delete.png');
 
-  await pagesObj.pageSettingsCancelButton.click();
+  await pageObj.pageSettingsCancelButton.click();
   await utils.waitPlease(1000);
-  await utils.screenshot(pagesObj.pathFile, 'e4_07-page_settings_cancel.png');
+  await utils.screenshot(pageObj.pathFile, 'e4_07-page_settings_cancel.png');
 
 });

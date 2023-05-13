@@ -1,7 +1,5 @@
 import { test } from '@playwright/test';
-import {Login} from '../../../../pages/login';
-import {Utils} from '../../../../pages/utils';
-import {Post} from '../../../../pages/post';
+import {Service} from './../../../../pages/service';
 
 // Escenario 4:
 
@@ -15,9 +13,11 @@ import {Post} from '../../../../pages/post';
 
 test('Escenario 4', async ({ page }) => {
 
-  const login = new Login(page);
-  const utils = new Utils(page);
-  const post = new Post(page);
+  const service = new Service(page);
+
+  const login = service.login;
+  const utils = service.utils;
+  const post = service.post;
 
   post.pathFile = post.pathFile + 'F2/';
   post.newPostTitle = 'POST EDITADO';
@@ -77,7 +77,7 @@ test('Escenario 4', async ({ page }) => {
         elementFound = true;
         await i.click();
         await utils.waitPlease(1000);
-        await utils.screenshot(post.pathFile, 'e4_15-post_un_published_detalle.png');
+        await utils.screenshot(post.pathFile, 'e4_16-post_un_published_detalle.png');
         break;
       }
     }

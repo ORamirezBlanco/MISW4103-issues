@@ -1,14 +1,8 @@
-import dotenv from 'dotenv';
-import path from 'path';
 
-exports.Login = class Login {
+exports.Login314 = class Login314 {
 
     constructor(page) {
         this.page = page;
-        let result = dotenv.config();
-        if (result.error) {
-            throw result.error
-        }
         this.usernameTextbox = page.getByPlaceholder('Email Address');
         this.passwordTextbox = page.getByPlaceholder('Password');
         this.loginButton = page.getByRole('button', { name: 'Sign in' });
