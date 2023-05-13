@@ -9,7 +9,7 @@ Scenario: Ingresar al sistema
           Dar clic en el modal al botón Delete
           Verificar que no exista la Página
 
-  Given I navigate to page "http://localhost:2368/ghost/#/editor/page"
+  Given I navigate to page "http://localhost:3002/ghost/#/editor/page"
   And I wait for 2 seconds
   When I enter email
   And I enter password

@@ -10,7 +10,7 @@ Scenario: Ingresar al sistema
           Ir a la lista de Post con estado Draft
           Verificar que el Post editado cuente con el estado Draft
           
-  Given I navigate to page "http://localhost:2368/ghost/#/editor/post/"
+  Given I navigate to page "http://localhost:3002/ghost/#/editor/post/"
   And I wait for 2 seconds
   When I enter email
   And I enter password

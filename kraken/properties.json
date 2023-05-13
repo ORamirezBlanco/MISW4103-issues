@@ -1,0 +1,12 @@
+{
+  "host_": "http://localhost:2369",
+  "version_": "v3.41",
+  "host": "http://localhost:3002",
+  "version": "v4.44",
+  "email": "nicohug@gmail.com",
+  "password": "qwerty12345",
+  "title":"testing title",
+  "titleEdit":"testing title edit",
+  "name":"testing name"
+}
+  

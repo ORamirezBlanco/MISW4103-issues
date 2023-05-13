@@ -6,7 +6,7 @@ Scenario: Ingresar al sistema
           Volver a la lista de Páginas          
           Verificar que la Página cuente con el estado Scheduled
           
-  Given I navigate to page "http://localhost:2368/ghost/#/editor/page"
+  Given I navigate to page "http://localhost:3002/ghost/#/editor/page"
   And I wait for 2 seconds
   When I enter email
   And I enter password

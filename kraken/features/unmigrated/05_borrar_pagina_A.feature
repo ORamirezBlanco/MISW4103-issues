@@ -1,14 +1,15 @@
-Feature: Editar Página
+Feature: Borrar Página
 
 @user1 @web
 Scenario: Ingresar al sistema
           Crear una Página y publicarla
           Volver a la lista de Páginas
-          Abrir la Página y cambiar su estado a Draft
-          Volver a la lista de Páginas
-          Verificar que la Página editada cuente con el estado Draft
+          Abrir la Página y el menú lateral
+          Dar clic en el botón Delete page
+          Dar clic en el modal al botón Delete
+          Verificar que no exista la Página
 
-  Given I navigate to page "http://localhost:2368/ghost/#/editor/page"
+  Given I navigate to page "http://localhost:3002/ghost/#/editor/page"
   And I wait for 2 seconds
   When I enter email
   And I enter password
@@ -23,15 +24,13 @@ Scenario: Ingresar al sistema
   And I click button "Publish"
   And I wait for 1 seconds
   And I click link "Pages"  
-  And I wait for 1 seconds  
+  And I wait for 1 seconds
   And I click a new "page"
   And I wait for 1 seconds
-  And I click publish
+  And I open a lateral menu
   And I wait for 1 seconds
-  And I click unpublished
+  And I click delete button
   And I wait for 1 seconds
-  And I click button save
+  And I click button "Delete"
   And I wait for 1 seconds
-  And I click link "Pages"
-  And I wait for 1 seconds
-  Then I check exists "page" with this id and status draft
+  Then I check not exists a new "page"

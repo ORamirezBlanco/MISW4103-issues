@@ -8,7 +8,7 @@ Scenario: Ingresar al sistema
           Volver al listado de Post
           Verificar que el Post creado exista en la lista de Post publicados con estado SCHEDULED
           
- Given I navigate to page "http://localhost:2368/ghost/#/editor/post/"
+ Given I navigate to page "http://localhost:3002/ghost/#/editor/post/"
  And I wait for 2 seconds
  When I enter email
  And I enter password
