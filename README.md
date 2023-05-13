@@ -1,5 +1,25 @@
 # Pruebas Automatizadas de Software
 
+## Entrega Semana 6
+
+## Integrantes
+
+- OSCAR EVELIO RAMIREZ BLANCO (o.ramirezb@uniandes.edu.co)
+- WILLIAM ERNESTO BALLESTEROS BLANCO (w.ballesteros@uniandes.edu.co)
+- RICARDO NICOLAS HÜG (r.hug@uniandes.edu.co)
+- LUIS DANIEL ANGEL BELTRAN (l.angelb@uniandes.edu.co)
+
+## Funcionalidades
+
+- Crear Post: permite crear un nuevo post.
+- Editar Post: permite editar un post existente.
+
+
+
+
+
+
+### ------------------
 ## Entrega Semana 5
 
 ## Integrantes
