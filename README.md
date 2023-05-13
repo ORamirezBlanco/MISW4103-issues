@@ -14,12 +14,119 @@
 - Crear Post: permite crear un nuevo post.
 - Editar Post: permite editar un post existente.
 
+## Lista de Escenarios
+- Crear Post
+  - Escenario 1:
+    - Ingreso al sistema
+    - Navego a crear post
+    - Ingreso el titulo del nuevo post
+    - Vuelvo al listado de post
+    - Verifico que el post creado exista en la lista de post borradores
+  - Escenario 2:
+    - Ingreso al sistema
+    - Navego a crear post
+    - Ingreso el titulo del post
+    - Publico el nuevo post 
+    - Vuelvo al listado de post
+    - Verifico que el post creado exista en la lista de post publicados
+  - Escenario 3:
+    - Ingreso al sistema
+    - Creo un nuevo post en borrador
+    - Calendarizo el nuevo post
+    - Verifico que exista el post creado como calendarizado  
+  - Escenario 4:
+    - Ingreso al sistema
+    - Creo una nueva página en borrador
+    - Verifico que se genere el id del post / verifico que aparezca el botón borrar
+- Editar Post
+  - Escenario 1:
+    - Ingreso al sistema
+    - Creo un post en borrador
+    - Vuelvo a la lista de borradores
+    - Selecciono el nuevo post
+    - Edito el título del post
+    - Vuelvo a la lista de borradores
+    - Verifico que el título haya cambiado
+  - Escenario 2:
+    - Ingreso al sistema
+    - Creo un post en borrador
+    - Vuelvo a la lista de borradores
+    - Selecciono el nuevo post
+    - Publico el post
+    - Voy a la lista de posts publicados
+    - Verifico que el post editado exista  
+  - Escenario 3:
+    - Ingreso al sistema
+    - Creo un post como publicado
+    - Vuelvo a la lista de publicados
+    - Selecciono el nuevo post
+    - Edito el post como borrador
+    - Vuelvo a la lista de borradores
+    - Verifico que el post existe como borrador
+  - Escenario 4:
+    - Ingreso al sistema
+    - Creo un post como calendarizado
+    - Vuelvo a la lista de calendarizados
+    - Selecciono el nuevo post
+    - Edito el post como borrador
+    - Vuelvo a la lista de borradores
+    - Verifico que el post existe como borrador
 
 
+## Ejecución de las pruebas utilizando Kraken (Ubuntu): (REVISAR ENTREGA)
+- Es necesario que la aplicación Ghost v3.41.1 se este ejecutando y su sistema sea alcanzable desde la maquina que se van a ejecutar las pruebas
+- Instalar node 14
+- La herramienta requiere que se tenga ADB instalado para ejecutarse
+- Descargar el repositorio:
+  **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
+- Ubicarse en la carpeta kraken:
+  **cd MISW4103-issues/kraken**
+- Ejecutar: 
+  **npm install**
+- Modificar features/web/step_definitions/properties.json con las credenciales de usuario reemplazando <EMAIL> y <PASSWORD>
+- De ser necesario hacer un reemplazo en los features del la base de la URL donde se está ejecutando Ghost. Por defecto está configurado para ejecutarse contra http://localhost:2368
+- Ejecutar: **npx kraken-node run**
+## Ejecución de las pruebas utilizando playwright
+- Es necesario que la aplicación Ghost v3.41.1 se este ejecutando y su sistema sea alcanzable desde la maquina que se van a ejecutar las pruebas  
+- Confirmar la utilizacion de node 14 (14.18.0):
+  **node -v**
+- Descargar el repositorio:
+  **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
+- Ubicarse en la carpeta playwright:
+  **cd MISW4103-issues** y después **cd playwright**
+- configurar las variables de entorno en el archivo **.env** que se encuentra en el directorio raiz con los parametros del sistema por cada sistema Ghost V3 y V4:
+  **GHOST_PAGE, USER_EMAIL, USER_PASSW, GHOST_VERSION**, cambiar para USER_EMAIL el valor "<<user_email>>" y para USER_PASSW el valor "<<user_password>>", GHOST_PAGE, GHOST_VERSION y RESULT_IMAGES_PATH para cada sistema
+- Configurar en el archivo **playwright.config.js** que se encuentra en el directorio raiz el arreglo **projects** para adicionar o retirar navegadores en la ejecucion de las pruebas.
+- Ejecutar comando para instalar las librerias:
+  **npm install**
+- Ejecutar comando para lanzar las pruebas:
+  - **Funcionalidad Crear Post **   **npx playwright test tests/ghost/F1/createPost**
+  - **Funcionalidad Editar Post**   **npx playwright test tests/ghost/F2/editPost**
+- Realizar la configuración para la otra version de Ghost
+
+## Ejecución de la comparación de imagenes utilizando resemble 
+- Ubicar las carpetas de las imágenes en un directorio de referencia 
+  ./tests/ghost/3.41/F1
+  ./tests/ghost/3.41/F2
+  ./tests/ghost/4.41/F1
+  ./tests/ghost/4.41/F2
+- Realizar las configuraciones en el archivo config.json
+    "beforePath":"./tests/ghost/3.41"
+    "afterPath":"./tests/ghost/4.44"
+- Ejecutar comando para instalar las librerias:
+  **npm install**
+- Ejecutar comando para lanzar la comparación:
+  **node index.propousal.js**
+- Los resultados se encuentra en la carpeta por cada subcarpeta en los directorios de referencia
+  ./results/F1/index.html  
+  ./results/F2/index.html  
+  
+  
+  
+  
+  
 
 
-
-#
 #
 #
 
