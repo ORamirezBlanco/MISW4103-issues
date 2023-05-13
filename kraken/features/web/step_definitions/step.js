@@ -1,6 +1,6 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const {LoginPage} = require('../pages/login');
-const {PostPage} = require('../pages/post');
+const {EditorPage} = require('../pages/editor');
 const {SitePage} = require('../pages/site')
 const fs = require('fs');
 const path = require('path');
@@ -12,7 +12,7 @@ this.params = properties;
 const testFolder = path.join(__dirname, `../../../tests`);
 let testNameFolder = "";
 let loginPage = {};
-let postPage = {};
+let editorPage = {};
 let sitePage = {};
 let count = 1;
 let d = {}
@@ -32,12 +32,12 @@ Given('I initialize test {string}', async function (testName) {
   }
   d = this.driver;
   loginPage = new LoginPage(this.driver, properties.host);
-  postPage = new PostPage(this.driver, properties.host);
+  editorPage = new EditorPage(this.driver, properties.host);
   sitePage = new SitePage(this.driver, properties.host);
 });
 
 Given('I navigate to editor {string}', async function (type) {
-  await postPage.gotoEditor(type);
+  await editorPage.gotoEditor(type);
 });
 
 When('I enter and submit credentials', async function () {
@@ -49,25 +49,25 @@ When('I enter and submit credentials', async function () {
 });
 
 When('I enter title', async function () {
-  await postPage.setTitle(properties.title);
+  await editorPage.setTitle(properties.title);
 
   saveScreenshot(`enter_title`);
 })
 
 When('I enter edit title', async function () {
-  await postPage.setTitle(properties.titleEdit);
+  await editorPage.setTitle(properties.titleEdit);
 
   saveScreenshot(`enter_edit_title`);
 })
 
 When('I get new id', async function () {
-  properties.newId = await postPage.getId();
+  properties.newId = await editorPage.getId();
 })
 
 When('I go to list {string} {string}', async function (linkName1, linkName2) {
-  await postPage.clickLinkByName(linkName1);
+  await editorPage.clickLinkByName(linkName1);
   await this.driver.pause(1000);
-  await postPage.clickLinkByName(linkName1);
+  await editorPage.clickLinkByName(linkName1);
   await this.driver.pause(2000);
   await sitePage.clickLinkByName(linkName2);
   
@@ -85,11 +85,11 @@ Then('I check exists new {string} with this id and edit title', async function (
 })
 
 When('I publish post', async function () {
-  await postPage.openPublishMenu();
+  await editorPage.openPublishMenu();
   await this.driver.pause(1000);
-  await postPage.clickPublishButton();
-  if(await postPage.checkExistsPublishButton() === true) {
-    await postPage.clickPublishButton();
+  await editorPage.clickPublishButton();
+  if(await editorPage.checkExistsPublishButton() === true) {
+    await editorPage.clickPublishButton();
   }
   
   saveScreenshot(`publish_post`);

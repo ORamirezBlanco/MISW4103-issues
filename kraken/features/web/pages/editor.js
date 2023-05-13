@@ -1,4 +1,4 @@
-class PostPage {
+class EditorPage {
   driver = {};
   host = "";
 
@@ -45,4 +45,4 @@ class PostPage {
   }
 } 
 
-module.exports = { PostPage };
+module.exports = { EditorPage };
