@@ -105,6 +105,8 @@
 - Realizar la configuración para la otra version de Ghost
 
 ## Ejecución de la comparación de imagenes utilizando resemble 
+- Ubicarse en la carpeta playwright:
+  **cd resemble** 
 - Ubicar las carpetas de las imágenes en un directorio de referencia 
   ./tests/ghost/3.41/F1
   ./tests/ghost/3.41/F2
