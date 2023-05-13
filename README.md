@@ -108,20 +108,20 @@
 - Ubicarse en la carpeta playwright:
   **cd resemble** 
 - Ubicar las carpetas de las imágenes en un directorio de referencia 
-  ./tests/ghost/3.41/F1
-  ./tests/ghost/3.41/F2
-  ./tests/ghost/4.41/F1
-  ./tests/ghost/4.41/F2
+  - ./tests/ghost/3.41/F1
+  - ./tests/ghost/3.41/F2
+  - ./tests/ghost/4.41/F1
+  - ./tests/ghost/4.41/F2
 - Realizar las configuraciones en el archivo config.json
-    "beforePath":"./tests/ghost/3.41"
-    "afterPath":"./tests/ghost/4.44"
+    - "beforePath":"./tests/ghost/3.41"
+    - "afterPath":"./tests/ghost/4.44"
 - Ejecutar comando para instalar las librerias:
   **npm install**
 - Ejecutar comando para lanzar la comparación:
   **node index.propousal.js**
 - Los resultados se encuentra en la carpeta por cada subcarpeta en los directorios de referencia
-  ./results/F1/index.html  
-  ./results/F2/index.html  
+  - ./results/F1/index.html  
+  - ./results/F2/index.html  
   
   
   
