@@ -1,9 +1,8 @@
 {
     "urlBefore":"http://localhost:2369/",
     "urlAfter":"http://localhost:3002/",
-    "scenarioName":"createPost_01",
-    "beforePath":"./tests/test_01_v3.41",
-    "afterPath":"./tests/test_01_v4.44",
+    "beforePath":"./tests/ghost/3.41",
+    "afterPath":"./tests/ghost/4.44",
     "options":{
         "output": {
             "errorColor": {
