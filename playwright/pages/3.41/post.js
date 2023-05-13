@@ -1,6 +1,6 @@
 const { Utils } = require("../utils");
 
-exports.Post314 = class Post314 extends Utils {
+exports.Post341 = class Post341 extends Utils {
 
     newPostTitle = "Relojes";
     newPostContent = "Relojes content";

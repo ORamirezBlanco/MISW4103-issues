@@ -1,5 +1,5 @@
 
-exports.Login314 = class Login314 {
+exports.Login341 = class Login341 {
 
     constructor(page) {
         this.page = page;
