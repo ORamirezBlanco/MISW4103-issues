@@ -32,6 +32,11 @@ class SitePage {
     let element = await this.driver.$(`a[href="#/editor/${type}/${id}/"] div span`);
     return await element.getText();
   }
+
+  async existsListElement(type, id) {
+    const elements = await this.driver.$$(`a[href="#/editor/${type}/${id}/"]`);
+    return elements.length > 0;
+  }
 } 
 
 module.exports = { SitePage };

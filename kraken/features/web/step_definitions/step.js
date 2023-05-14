@@ -74,17 +74,7 @@ When('I go to list {string} {string}', async function (linkName1, linkName2) {
   saveScreenshot(`goto_list_${linkName1}_${linkName2}`);
 })
 
-Then('I check exists new {string} with this id and title', async function (type) {
-  const title = await sitePage.getH3TextForListEditorElement(type, properties.newId);
-  expect(title).to.equal(properties.title);
-})
-
-Then('I check exists new {string} with this id and edit title', async function (type) {
-  const title = await sitePage.getH3TextForListEditorElement(type, properties.newId);
-  expect(title).to.equal(properties.titleEdit);
-})
-
-When('I publish post', async function () {
+When('I publish element', async function () {
   await editorPage.openPublishMenu();
   await this.driver.pause(1000);
   await editorPage.clickPublishButton();
@@ -100,9 +90,39 @@ When('I click a new {string}', async function (type) {
   saveScreenshot(`click_a_new_${type}`);
 })
 
+When('I open a lateral menu', async function () {
+  await editorPage.openLateralMenu();
+  saveScreenshot(`open_lateral_menu`);
+})
+
+When('I delete element', async function () {
+  await editorPage.clickDeleteButton();
+  saveScreenshot(`delete_element`);
+})
+
+When('I confirm delete element', async function () {
+  await editorPage.clickConfirmDelete();
+  saveScreenshot(`delete_element`);
+})
+
 Then('I check exists new page with this id and {string} state', async function (status) {
   const text = await sitePage.getSpanTextForListEditorElement("page", properties.newId);
   expect(status).to.equal(text);
+})
+
+Then('I check exists new {string} with this id and title', async function (type) {
+  const title = await sitePage.getH3TextForListEditorElement(type, properties.newId);
+  expect(title).to.equal(properties.title);
+})
+
+Then('I check exists new {string} with this id and edit title', async function (type) {
+  const title = await sitePage.getH3TextForListEditorElement(type, properties.newId);
+  expect(title).to.equal(properties.titleEdit);
+})
+
+Then('I check not exists a new {string}', async function (type) {
+  const exists = await sitePage.existsListElement(type, properties.newId);
+  expect(exists).to.equal(false);
 })
 
 //UNMIGRATED
@@ -116,24 +136,4 @@ Then('I check exists new element with this edit title', async function () {
   let elements = await this.driver.$$(`h3=${properties.titleEdit}`);
   let exists = elements.length > 0;
   expect(exists).to.equal(true);
-})
-
-When('I click link {string}', async function (string) {
-  let element = await this.driver.$(`a=${string}`);
-  await element.click();
-})
-
-When('I open a lateral menu', async function () {
-  let element = await this.driver.$('textarea:nth-child(2)');
-  await element.click();
-})
-
-When('I click delete button', async function () {
-  let element = await this.driver.$('.settings-menu-delete-button');
-  await element.click();
-})
-
-Then('I check not exists a new {string}', async function (string) {
-  const elements = await this.driver.$$(`a[href="#/editor/${string}/${properties.newId}/"]`);
-  expect(elements.length).to.equal(0);
 })

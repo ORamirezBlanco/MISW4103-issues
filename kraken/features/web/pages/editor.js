@@ -43,6 +43,21 @@ class EditorPage {
     let elements = await this.driver.$$(`button=Publish`);
     return elements.length > 0;
   }
+
+  async openLateralMenu() {
+    let element = await this.driver.$('textarea:nth-child(2)');
+    await element.click();
+  }
+
+  async clickDeleteButton() {
+    let element = await this.driver.$('.settings-menu-delete-button');
+    await element.click();
+  }
+
+  async clickConfirmDelete() {
+    let element = await this.driver.$(`button=Delete`);
+    await element.click();
+  }
 } 
 
 module.exports = { EditorPage };

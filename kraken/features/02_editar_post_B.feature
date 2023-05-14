@@ -21,7 +21,7 @@ And I go to list "Posts" "Drafts"
 And I wait for 1 seconds
 And I click a new "post"
 And I wait for 1 seconds
-And I publish post
+And I publish element
 And I wait for 1 seconds
 And I wait for 2 seconds
 And I go to list "Posts" "Published"
