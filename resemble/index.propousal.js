@@ -75,7 +75,7 @@ async function executeTest() {
   return "";
 }
 
-(async () => console.log(await executeTest(process.argv[2], process.argv[3], process.argv[4])))();
+(async () => console.log(await executeTest()))();
 
 
 function stepHTML(step, info) {
@@ -120,7 +120,7 @@ function createReportHTML(scenarioName, datetime, stepList, resInfo) {
           </p>
           
           <div id="visualizer">
-              ${stepList.map(step => stepHTML(step, resInfo[step]))}
+              ${stepList.map(step => stepHTML(step, resInfo[step])).join('')}
           </div>
       </body>
   </html>`
