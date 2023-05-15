@@ -104,7 +104,7 @@
   - Funcionalidad Editar Post   **npx playwright test tests/ghost/F2/editPost**
 - Realizar la configuración para la otra version de Ghost
 
-## Ejecución de la comparación de imagenes utilizando resemble 
+## Ejecución de la comparación de imagenes utilizando Resemble JS
 - Ubicarse en la carpeta playwright:
   **cd resemble** 
 - Ubicar las carpetas de las imágenes en un directorio de referencia 
