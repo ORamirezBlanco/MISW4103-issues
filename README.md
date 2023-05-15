@@ -121,8 +121,9 @@
   **node index.js**
 - Los resultados se encuentra en la carpeta por cada subcarpeta en los directorios de referencia
   - ./results/F1/index.html  
-  - ./results/F2/index.html  
-  
+  - ./results/F2/index.html
+## Reporte diferencias visuales
+- Issues (https://github.com/ORamirezBlanco/MISW4103-issues/issues)
   
   
   
