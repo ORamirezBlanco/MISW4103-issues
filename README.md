@@ -118,7 +118,7 @@
 - Ejecutar comando para instalar las librerias:
   **npm install**
 - Ejecutar comando para lanzar la comparación:
-  **node index.propousal.js**
+  **node index.js**
 - Los resultados se encuentra en la carpeta por cada subcarpeta en los directorios de referencia
   - ./results/F1/index.html  
   - ./results/F2/index.html  
