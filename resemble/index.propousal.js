@@ -37,6 +37,7 @@ async function executeTest() {
 
   for (i = 0; i < directories.length; i++) {
     const dir = directories[i];
+    console.log(`Execution started for: - ${dir}`);
     if (!fs.existsSync(`./results/${dir}`)) {
       fs.mkdirSync(`./results/${dir}/imagenes`, { recursive: true });
     }
@@ -67,8 +68,9 @@ async function executeTest() {
 
     let datetime = new Date().toISOString().replace(/:/g, ".");
     fs.writeFileSync(`./results/${dir}/report.html`, createReportHTML(dir, datetime, filesSorce, resultInfo));
+    console.log(`see ./results/${dir}/report.html`);
+    console.log(`Execution finished for ${dir}`);
     console.log('------------------------------------------------------------------------------------');
-    console.log(`Execution finished for folder ${dir}`);
   }
   console.log('------------------------------------------------------------------------------------');
   console.log("Execution finished. Check the report under the results folder");

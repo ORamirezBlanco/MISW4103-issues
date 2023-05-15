@@ -2,85 +2,111 @@ const compareImages = require("resemblejs/compareImages")
 const config = require("./config.json");
 const fs = require('fs');
 
+var directories = [];
+
 const { options } = config;
 
-async function executeTest(){
-  const scenarioName = config.scenarioName;
+var getFiles = function (path, files) {
+  fs.readdirSync(path).forEach(function (file) {
+    var subpath = path + '/' + file;
+    if (fs.lstatSync(subpath).isDirectory()) {
+      getFiles(subpath, files);
+    } else {
+      files.push(file);
+    }
+  });
+}
+
+var getDirectory = function (path, files) {
+  fs.readdirSync(path).forEach(function (file) {
+    var subpath = path + '/' + file;
+    if (fs.lstatSync(subpath).isDirectory()) {
+      files.push(file);
+      getDirectory(subpath, files);
+    }
+  });
+}
+
+async function executeTest() {
+  console.log('------------------------------------------------------------------------------------');
+  console.log("Execution started..");
   const beforePath = config.beforePath;
   const afterPath = config.afterPath;
-  const beforeFileImages = fs.readdirSync(beforePath).sort((a, b) => a.localeCompare(b));
-  const afterFileImages = fs.readdirSync(afterPath).sort((a, b) => a.localeCompare(b));
 
-  if(beforeFileImages.length === 0 || beforeFileImages.length !== afterFileImages.length){
-    return "Invalid content length";
-  }
-  const size = beforeFileImages.length;
-  const stepList = [];
-  for(let i = 0; i < size; i++) {
-    if(beforeFileImages[i] !== afterFileImages[i]) {
-      return "Invalid content names";
+  getDirectory(beforePath, directories);
+
+  for (i = 0; i < directories.length; i++) {
+    const dir = directories[i];
+    console.log(`Execution started for: - ${dir}`);
+    if (!fs.existsSync(`./results/${dir}`)) {
+      fs.mkdirSync(`./results/${dir}/imagenes`, { recursive: true });
+    }
+    fs.copyFileSync('./index.css', `./results/${dir}/index.css`);
+    filesSorce = []
+    let resultInfo = {}
+    getFiles(`./${beforePath}/${dir}`, filesSorce);
+    for (step of filesSorce) {
+
+      const data = await compareImages(
+        fs.readFileSync(`${beforePath}/${dir}/${step}`),
+        fs.readFileSync(`${afterPath}/${dir}/${step}`),
+        options
+      );
+
+      resultInfo[step] = {
+        isSameDimensions: data.isSameDimensions,
+        dimensionDifference: data.dimensionDifference,
+        rawMisMatchPercentage: data.rawMisMatchPercentage,
+        misMatchPercentage: data.misMatchPercentage,
+        diffBounds: data.diffBounds,
+        analysisTime: data.analysisTime
+      }
+      fs.writeFileSync(`./results/${dir}/imagenes/compare-${step}`, data.getBuffer());
+      fs.copyFileSync(`${beforePath}/${dir}/${step}`, `./results/${dir}/imagenes/before-${step}`);
+      fs.copyFileSync(`${afterPath}/${dir}/${step}`, `./results/${dir}/imagenes/after-${step}`);
     }
 
-    stepList.push(beforeFileImages[i].slice(0, beforeFileImages[i].lastIndexOf('.')));
+    let datetime = new Date().toISOString().replace(/:/g, ".");
+    fs.writeFileSync(`./results/${dir}/report.html`, createReportHTML(dir, datetime, filesSorce, resultInfo));
+    console.log(`see ./results/${dir}/report.html`);
+    console.log(`Execution finished for ${dir}`);
+    console.log('------------------------------------------------------------------------------------');
   }
-  let resultInfo = {}
-  if (!fs.existsSync(`./results/${scenarioName}`)){
-    fs.mkdirSync(`./results/${scenarioName}`, { recursive: true });
-  }
-  fs.copyFileSync('./index.css', `./results/${scenarioName}/index.css`);
-  for(step of stepList){
-      const data = await compareImages(
-          fs.readFileSync(`${beforePath}/${step}.png`),
-          fs.readFileSync(`${afterPath}/${step}.png`),
-          options
-      );
-      resultInfo[step] = {
-          isSameDimensions: data.isSameDimensions,
-          dimensionDifference: data.dimensionDifference,
-          rawMisMatchPercentage: data.rawMisMatchPercentage,
-          misMatchPercentage: data.misMatchPercentage,
-          diffBounds: data.diffBounds,
-          analysisTime: data.analysisTime
-      }
-      fs.writeFileSync(`./results/${scenarioName}/compare-${step}.png`, data.getBuffer());
-      fs.copyFileSync(`${beforePath}/${step}.png`, `./results/${scenarioName}/before-${step}.png`);
-      fs.copyFileSync(`${afterPath}/${step}.png`, `./results/${scenarioName}/after-${step}.png`);      
-  }
-
-  let datetime = new Date().toISOString().replace(/:/g,".");
-  fs.writeFileSync(`./results/${scenarioName}/report.html`, createReportHTML(scenarioName, datetime, stepList, resultInfo));
-  console.log('------------------------------------------------------------------------------------')
-  console.log("Execution finished. Check the report under the results folder")
-  return resultInfo;  
+  console.log('------------------------------------------------------------------------------------');
+  console.log("Execution finished. Check the report under the results folder");
+  return "";
 }
-(async ()=>console.log(await executeTest(process.argv[2], process.argv[3], process.argv[4])))();
 
-function stepHTML(step, info){
+(async () => console.log(await executeTest()))();
+
+
+function stepHTML(step, info) {
+  const tableResults = createTableFromJson(info);
   return `<div class=" browser" id="test0">
   <div class=" btitle">
       <h2>Step: ${step}</h2>
-      <p>Data: ${JSON.stringify(info)}</p>
+      <p><div id="container">${tableResults}</div></p>
   </div>
   <div class="imgline">
     <div class="imgcontainer">
       <span class="imgname">Reference</span>
-      <img class="img2" src="before-${step}.png" id="refImage" label="Reference">
+      <img class="img2" src="./imagenes/before-${step}" id="refImage" label="Reference">
     </div>
     <div class="imgcontainer">
       <span class="imgname">Test</span>
-      <img class="img2" src="after-${step}.png" id="testImage" label="Test">
+      <img class="img2" src="./imagenes/after-${step}" id="testImage" label="Test">
     </div>
   </div>
   <div class="imgline">
     <div class="imgcontainer">
       <span class="imgname">Diff</span>
-      <img class="imgfull" src="./compare-${step}.png" id="diffImage" label="Diff">
+      <img class="imgfull" src="./imagenes/compare-${step}" id="diffImage" label="Diff">
     </div>
   </div>
 </div>`
 }
 
-function createReportHTML(scenarioName, datetime, stepList, resInfo){
+function createReportHTML(scenarioName, datetime, stepList, resInfo) {
   return `
   <html>
       <head>
@@ -96,8 +122,21 @@ function createReportHTML(scenarioName, datetime, stepList, resInfo){
           </p>
           
           <div id="visualizer">
-              ${stepList.map(step=>stepHTML(step, resInfo[step]))}
+              ${stepList.map(step => stepHTML(step, resInfo[step])).join('')}
           </div>
       </body>
   </html>`
+}
+
+function createTableFromJson(jsonData) {
+  let tableHtml = '<table style="width:100%"><thead><tr>';
+  for (const key in jsonData) {
+    tableHtml += '<th>' + key + '</th>';
+  }
+  tableHtml += '</tr></thead><tbody><tr>';
+  for (const key in jsonData) {
+    tableHtml += "<td style='text-align:center; vertical-align:middle'>" + JSON.stringify(jsonData[key]) + '</td>';
+  }
+  tableHtml += '</tr></tbody></table>';
+  return tableHtml;
 }
