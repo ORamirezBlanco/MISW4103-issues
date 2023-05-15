@@ -9,6 +9,9 @@
 - RICARDO NICOLAS HÜG (r.hug@uniandes.edu.co)
 - LUIS DANIEL ANGEL BELTRAN (l.angelb@uniandes.edu.co)
 
+## Para más información
+-  [Wiki](https://github.com/ORamirezBlanco/MISW4103-issues/wiki)
+
 ## Funcionalidades
 
 - Crear Post: permite crear un nuevo post.
@@ -123,12 +126,7 @@
   - ./results/F1/index.html  
   - ./results/F2/index.html
 ## Reporte diferencias visuales
-- Issues (https://github.com/ORamirezBlanco/MISW4103-issues/issues)
-  
-  
-  
-  
-
+- [Issues](https://github.com/ORamirezBlanco/MISW4103-issues/issues)
 
 #
 #
