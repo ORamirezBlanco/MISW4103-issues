@@ -30,7 +30,6 @@ test('Escenario 4', async ({ page }) => {
   await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e4_02-post_listado.png');
 
-
   await post.createPost('e4_', 3);
 
   await post.postSettingsButton.click();
