@@ -30,6 +30,7 @@ test('Escenario 1', async ({ page }) => {
 
   // Hacer clic en post para ver el listado de todos los post
   await post.postsLink.click();
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e1_02-post_listado.png');
 
   await post.createPost('e1_', 3);
@@ -39,7 +40,7 @@ test('Escenario 1', async ({ page }) => {
   let posts = await post.draftPost();
   await utils.screenshot(post.pathFile, 'e1_06-post_listado_posts_draft.png');
 
-  post.newPostTitle = 'POST EDITADO';
+  post.newPostTitle = await post.getEditTitle();
   
   if (posts.length > 0) {
     await posts[0].click();

@@ -19,7 +19,6 @@ test('Escenario 2', async ({ page }) => {
   const pageObj = service.pageObj;
 
   pageObj.pathFile = pageObj.pathFile + 'F4/';
-  pageObj.newPageTitle = 'PAGINA EDITADO';
 
   await login.gotoLoginPage();
   await utils.waitPlease();
@@ -30,6 +29,7 @@ test('Escenario 2', async ({ page }) => {
 
   // Hacer clic en page para ver el listado de todos los page
   await pageObj.pagesLink.click();
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e2_02-page_listado.png');
 
   await pageObj.createPage('e2_',3);
@@ -53,7 +53,7 @@ test('Escenario 2', async ({ page }) => {
     await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e2_09-page_editar_publish_confirm.png');
 
-    await pageObj.backPage('e3_', 10);
+    await pageObj.backPage('e2_', 10);
 
     pages = await pageObj.publishedPages();
     await utils.screenshot(pageObj.pathFile, 'e2_11-page_listado_pages_published.png');

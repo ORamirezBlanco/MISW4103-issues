@@ -38,7 +38,7 @@ test('Escenario 1', async ({ page }) => {
   let pages = await pageObj.draftPages();
   await utils.screenshot(pageObj.pathFile, 'e1_06-page_listado_pages_draft.png');
 
-  pageObj.newPageTitle = 'PAGINA EDITADA';
+  pageObj.newPageTitle = await pageObj.getEditTitle();
 
   if (pages.length > 0) {
     await pages[0].click();

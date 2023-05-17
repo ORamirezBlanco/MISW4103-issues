@@ -26,17 +26,10 @@ test('Escenario 4', async ({ page }) => {
 
   // Hacer clic en page para ver el listado de todos los page
   await pageObj.pagesLink.click();
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e4_02-page_listado.png');
 
-  // hacer clic para crear un nuevo page
-  await pageObj.pageNew.first().click();
-  await utils.screenshot(pageObj.pathFile, 'e4_03-page_crear_vacio.png');
-
-  // colocar un titulo al nuevo page
-  await pageObj.pageTitle.fill(pageObj.newPageTitle);
-  await pageObj.pageTitleConfirm.click();
-  await utils.waitPlease();
-  await utils.screenshot(pageObj.pathFile, 'e4_04-page_crear_diligenciado.png');
+  await pageObj.createPage('e4_',3);
 
   await pageObj.pageSettingsButton.click();
   await utils.waitPlease();

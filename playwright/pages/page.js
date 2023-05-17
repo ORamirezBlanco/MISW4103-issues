@@ -2,8 +2,7 @@ const { Utils } = require("./utils");
 
 exports.Page = class Page extends Utils {
 
-    newPageTitle = "Relojes Pages";
-    newPostContent = "Relojes content";
+    newPageTitle = "";
     listElements = 'li.gh-list-row.gh-posts-list-item';
     statusFilter = 'div.gh-contentfilter-menu.gh-contentfilter-type';
 
@@ -75,7 +74,7 @@ exports.Page = class Page extends Utils {
     async createPage(esc, i) {
         await this.pageNew.first().click();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-page_crear_vacio.png');
-
+        this.newPageTitle = await this.getNewTitle();
         await this.pageTitle.fill(this.newPageTitle);
         await this.pageTitleConfirm.click();
         await this.waitPlease();

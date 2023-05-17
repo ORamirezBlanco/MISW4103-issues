@@ -19,7 +19,6 @@ test('Escenario 4', async ({ page }) => {
   const pageObj = service.pageObj;
 
   pageObj.pathFile = pageObj.pathFile + 'F4/';
-  pageObj.newPostTitle = 'POST EDITADO';
 
   await login.gotoLoginPage();
   await utils.waitPlease();

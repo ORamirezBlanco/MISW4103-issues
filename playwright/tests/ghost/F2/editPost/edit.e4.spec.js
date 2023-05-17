@@ -20,7 +20,6 @@ test('Escenario 4', async ({ page }) => {
   const post = service.post;
 
   post.pathFile = post.pathFile + 'F2/';
-  post.newPostTitle = 'POST EDITADO';
 
   await login.gotoLoginPage();
   await utils.waitPlease();

@@ -28,6 +28,7 @@ test('Escenario 1', async ({ page }) => {
 
   // Hacer clic en post para ver el listado de todos los post
   await post.postsLink.click();
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e1_02-post_listado.png');
 
   await post.createPost('e1_',3);
@@ -53,6 +54,6 @@ test('Escenario 1', async ({ page }) => {
 
     await post.postSettingsDeleteButtonConfirm.click();
     await utils.waitPlease();
-    await utils.screenshot(post.pathFile, 'e1_12-post_menu_borrar_borrad.png');
+    await utils.screenshot(post.pathFile, 'e1_12-post_menu_borrar_borrado.png');
   }
 });

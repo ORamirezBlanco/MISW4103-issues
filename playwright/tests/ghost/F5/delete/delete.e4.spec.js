@@ -28,6 +28,7 @@ test('Escenario 4', async ({ page }) => {
 
   // Hacer clic en page para ver el listado de todos los page
   await pageObj.pagesLink.click();
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e4_02-page_listado.png');
 
   await pageObj.createPage('e4_',3);
@@ -52,6 +53,6 @@ test('Escenario 4', async ({ page }) => {
 
     await pageObj.pageSettingsDeleteButtonConfirm.click();
     await utils.waitPlease();
-    await utils.screenshot(pageObj.pathFile, 'e4_10-page_menu_borrar_borrad.png');
+    await utils.screenshot(pageObj.pathFile, 'e4_10-page_menu_borrar_borrado.png');
   }
 });

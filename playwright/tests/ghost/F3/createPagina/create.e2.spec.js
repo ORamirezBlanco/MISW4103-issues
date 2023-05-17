@@ -27,6 +27,7 @@ test('Escenario 2', async ({ page }) => {
 
   // Hacer clic en page para ver el listado de todos los page
   await pageObj.pagesLink.click();
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e2_02-page_listado.png');
 
   await pageObj.createPage('e2_',3);
