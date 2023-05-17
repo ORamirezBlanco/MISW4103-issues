@@ -18,10 +18,10 @@ test('Escenario 4', async ({ page }) => {
   pageObj.pathFile = pageObj.pathFile + 'F3/';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e4_00-page_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e4_01-page_principal.png');
 
   // Hacer clic en page para ver el listado de todos los page
@@ -35,19 +35,19 @@ test('Escenario 4', async ({ page }) => {
   // colocar un titulo al nuevo page
   await pageObj.pageTitle.fill(pageObj.newPageTitle);
   await pageObj.pageTitleConfirm.click();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e4_04-page_crear_diligenciado.png');
 
   await pageObj.pageSettingsButton.click();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e4_05-page_settings.png');
   
   await pageObj.pageSettingsDeleteButton.click();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e4_06-page_settings_delete.png');
 
   await pageObj.pageSettingsCancelButton.click();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e4_07-page_settings_cancel.png');
 
 });

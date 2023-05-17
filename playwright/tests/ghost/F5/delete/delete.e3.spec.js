@@ -20,10 +20,10 @@ test('Escenario 3', async ({ page }) => {
   pageObj.pathFile = pageObj.pathFile + 'F5/';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e3_00-page_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e3_01-page_principal.png');
 
   // Hacer clic en page para ver el listado de todos los page
@@ -40,19 +40,19 @@ test('Escenario 3', async ({ page }) => {
 
   if (pages.length > 0) {
     await pages[0].click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e3_09-page_editar_original.png');
 
     await pageObj.pageSettingsButton.click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e3_10-page_menu_borrar.png');
 
     await pageObj.pageSettingsDeleteButton.first().click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e3_11-page_menu_borrar_confirmar.png');
 
     await pageObj.pageSettingsDeleteButtonConfirm.click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e3_12-page_menu_borrar_borrad.png');
   }
 });

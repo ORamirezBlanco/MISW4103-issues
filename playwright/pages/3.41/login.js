@@ -1,7 +1,8 @@
-
-exports.Login341 = class Login341 {
+const { Utils } = require("../utils");
+exports.Login341 = class Login341 extends Utils {
 
     constructor(page) {
+        super(page);
         this.page = page;
         this.usernameTextbox = page.getByPlaceholder('Email Address');
         this.passwordTextbox = page.getByPlaceholder('Password');

@@ -21,10 +21,10 @@ test('Escenario 2', async ({ page }) => {
   post.newPostTitle = 'POST EDITADO';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e2_00-post_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e2_01-post_principal.png');
 
   // Hacer clic en post para ver el listado de todos los post
@@ -40,19 +40,19 @@ test('Escenario 2', async ({ page }) => {
 
   if (posts.length > 0) {
     await posts[0].click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e2_07-post_editar_original.png');
     
     await post.postSettingsButton.click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e2_08-post_menu_borrar.png');
 
     await post.postSettingsDeleteButton.first().click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e2_09-post_menu_borrar_confirmar.png');
 
     await post.postSettingsDeleteButtonConfirm.click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e2_10-post_menu_borrar_borrad.png');
   }
 });

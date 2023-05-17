@@ -21,10 +21,10 @@ test('Escenario 3', async ({ page }) => {
   pageObj.pathFile = pageObj.pathFile + 'F4/';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e3_00-page_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e3_01-page_principal.png');
 
   // Hacer clic en page para ver el listado de todos los page
@@ -41,21 +41,21 @@ test('Escenario 3', async ({ page }) => {
 
   if (pages.length > 0) {
     await pages[0].click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e3_09-page_editar_original.png');
 
     const pageTitleBase = await pageObj.pageTitle.inputValue();
 
     await pageObj.pageUpdateButton.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e3_10-page_menu_actualizar.png');
 
     await pageObj.pageUpdateUnPublishOption.first().click();
-    await utils.waitPlease(100);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e3_11-page_menu_actualizar_unpublicar.png');
 
     await pageObj.pageUpdateUnPublishConfirm.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e3_12-page_menu_actualizar_unpublicar_confirmar.png');
 
     // hacer clic para volver a los page 
@@ -72,7 +72,7 @@ test('Escenario 3', async ({ page }) => {
       if (text.startsWith(textToValidate)) {
         elementFound = true;
         await i.click();
-        await utils.waitPlease(1000);
+        await utils.waitPlease();
         await utils.screenshot(pageObj.pathFile, 'e3_15-page_un_published_detalle.png');
         break;
       }

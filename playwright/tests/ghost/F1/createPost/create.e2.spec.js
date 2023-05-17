@@ -21,10 +21,10 @@ test('Escenario 2', async ({ page }) => {
   post.pathFile = post.pathFile + 'F1/';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e2_00-post_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e2_01-post_principal.png');
 
   // Hacer clic en post para ver el listado de todos los post
@@ -42,10 +42,11 @@ test('Escenario 2', async ({ page }) => {
   for (let i of post_published) {
     let text = await i.innerText()
     text = text.replace(/[^A-Z0-9]/ig, '');
-    if (text.startsWith(post.newPostTitle)) {
+    const textToCompare =  post.newPostTitle.replace(/[^A-Z0-9]/ig, '');
+    if (text.startsWith(textToCompare )) {
       elementFound = true;
       await i.click();
-      await utils.waitPlease(1000);
+      await utils.waitPlease();
       await utils.screenshot(post.pathFile, 'e2_09-post_published_detalle.png');
       break;
     }

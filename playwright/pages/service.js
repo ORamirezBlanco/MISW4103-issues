@@ -5,7 +5,6 @@ import { Post341 } from './3.41/post';
 import { Post444 } from './4.44/post';
 import { Page } from './page';
 import dotenv from 'dotenv';
-
 exports.Service = class Service {
     login = {};
     utils = {};
@@ -17,8 +16,6 @@ exports.Service = class Service {
         if (result.error) {
             throw result.error
         }
-
-
         if (process.env.GHOST_VERSION == '3.41') {
             this.login = new Login341(page);
             this.utils = new Utils(page);

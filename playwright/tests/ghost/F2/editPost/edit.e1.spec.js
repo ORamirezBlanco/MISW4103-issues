@@ -22,10 +22,10 @@ test('Escenario 1', async ({ page }) => {
   post.pathFile = post.pathFile + 'F2/';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e1_00-post_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e1_01-post_principal.png');
 
   // Hacer clic en post para ver el listado de todos los post
@@ -43,19 +43,19 @@ test('Escenario 1', async ({ page }) => {
   
   if (posts.length > 0) {
     await posts[0].click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e1_07-post_editar_original.png');
     // colocar un titulo al nuevo post
     await post.postTitle.fill(post.newPostTitle);
     await post.postTitleConfirm.click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e1_08-post_editar_diligenciado.png');
 
     // hacer clic para volver a los post y dejarlo en draft
     await post.postsBack.first().click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await post.selectAllPosts();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e1_09-post_listado_posts.png');
 
     posts = await post.draftPost();
@@ -69,7 +69,7 @@ test('Escenario 1', async ({ page }) => {
       if (text.startsWith(textToValidate)) {
         elementFound = true;
         await i.click();
-        await utils.waitPlease(500);
+        await utils.waitPlease();
         await utils.screenshot(post.pathFile, 'e1_11-post_draft_detalle.png');
         break;
       }

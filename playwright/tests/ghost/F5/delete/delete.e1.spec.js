@@ -20,10 +20,10 @@ test('Escenario 1', async ({ page }) => {
   post.pathFile = post.pathFile + 'F5/';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e1_00-post_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e1_01-post_principal.png');
 
   // Hacer clic en post para ver el listado de todos los post
@@ -40,19 +40,19 @@ test('Escenario 1', async ({ page }) => {
 
   if (posts.length > 0) {
     await posts[0].click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e1_09-post_editar_original.png');
 
     await post.postSettingsButton.click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e1_10-post_menu_borrar.png');
 
     await post.postSettingsDeleteButton.first().click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e1_11-post_menu_borrar_confirmar.png');
 
     await post.postSettingsDeleteButtonConfirm.click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e1_12-post_menu_borrar_borrad.png');
   }
 });

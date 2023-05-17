@@ -22,10 +22,10 @@ test('Escenario 2', async ({ page }) => {
   pageObj.newPageTitle = 'PAGINA EDITADO';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e2_00-page_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e2_01-page_principal.png');
 
   // Hacer clic en page para ver el listado de todos los page
@@ -40,17 +40,17 @@ test('Escenario 2', async ({ page }) => {
 
   if (pages.length > 0) {
     await pages[0].click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e2_07-page_editar_original.png');
 
     const pageTitleBase = await pageObj.pageTitle.inputValue();
 
     await pageObj.pagePublishButton.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e2_08-page_editar_publish_menu.png');
 
     await pageObj.pagePublishConfirm.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e2_09-page_editar_publish_confirm.png');
 
     await pageObj.backPage('e3_', 10);
@@ -67,7 +67,7 @@ test('Escenario 2', async ({ page }) => {
       if (text.startsWith(textToValidate)) {
         elementFound = true;
         await i.click();
-        await utils.waitPlease(1000);
+        await utils.waitPlease();
         await utils.screenshot(pageObj.pathFile, 'e2_12-page_published_detalle.png');
         break;
       }

@@ -44,36 +44,36 @@ exports.Post444 = class Post444 extends Utils {
     }
 
     async draftPost() {
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.pagePostFilter.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.pagePostFilterDraft.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         return await this.page.$$(this.listElements);
     }
 
     async publishedPost() {
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.pagePostFilter.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.pagePostFilterPublished.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         return await this.page.$$(this.listElements);
     }
 
     async scheduledPost() {
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.pagePostFilter.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.pagePostFilterScheduled.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         return await this.page.$$(this.listElements);
     }
 
     async selectAllPosts() {
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.pagePostFilter.click()
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.pagePostFilterAll.click();
     }
 
@@ -83,45 +83,45 @@ exports.Post444 = class Post444 extends Utils {
 
         await this.postTitle.fill(this.newPostTitle);
         await this.postTitleConfirm.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_diligenciado.png');
     }
     
     async backPost(esc, i) {
         await this.postsBack.first().click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_listado_posts.png');
     }
 
     async publishPost(esc, i) {
         await this.postPublishButton.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_publish_menu.png');
 
         await this.postPublishConfirm.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i) + '-post_crear_publish_confirm.png');
 
         await this.postPublishConfirmReady.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_publish_confirm_2_ready.png');
     }
 
     async schedulePost(esc, i) {
         await this.postPublishButton.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_publish_menu.png');
 
         await this.pagePostScheduleCheck.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_publish_schedule_select.png');
 
         await this.pagePostScheduleConfirm.click();
-        await this.waitPlease(100);
+        await this.waitPlease();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i) + '-post_crear_publish_schedule_confirm.png');
         
         await this.postPublishScheduleConfirmReady.click();
-        await this.waitPlease(this.waitTime);
+        await this.waitPlease();
         await this.screenshot(this.pathFile, esc + await this.add_cero(i++) + '-post_crear_publish_schedule_confirm_2_ready.png');
     }
 }

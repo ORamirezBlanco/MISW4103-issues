@@ -23,10 +23,10 @@ test('Escenario 4', async ({ page }) => {
   post.newPostTitle = 'POST EDITADO';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e4_00-post_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e4_01-post_principal.png');
 
   // Hacer clic en post para ver el listado de todos los post
@@ -43,26 +43,26 @@ test('Escenario 4', async ({ page }) => {
 
   if (posts.length > 0) {
     await posts[0].click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e4_10-post_editar_original.png');
 
     const postTitleBase = await post.postTitle.inputValue();
  
     await post.postScheduledButton.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e4_11-post_menu_actualizar_schedule.png');
 
     await post.postUpdateUnPublishOption.first().click();
-    await utils.waitPlease(100);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e4_12-post_menu_actualizar_unpublicar.png');
 
     await post.postUnPublishConfirm.click();
-    await utils.waitPlease(100);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e4_13-post_menu_actualizar_unpublicar_confirmar.png');
 
     // hacer clic para volver a los post 
     await post.postsBack.first().click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(post.pathFile, 'e4_14-post_listado_posts.png');
 
     posts = await post.draftPost();
@@ -76,7 +76,7 @@ test('Escenario 4', async ({ page }) => {
       if (text.startsWith(textToValidate)) {
         elementFound = true;
         await i.click();
-        await utils.waitPlease(1000);
+        await utils.waitPlease();
         await utils.screenshot(post.pathFile, 'e4_16-post_un_published_detalle.png');
         break;
       }

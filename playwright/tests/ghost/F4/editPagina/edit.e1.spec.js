@@ -21,10 +21,10 @@ test('Escenario 1', async ({ page }) => {
   pageObj.pathFile = pageObj.pathFile + 'F4/';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e1_00-page_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile, 'e1_01-page_principal.png');
 
   // Hacer clic en page para ver el listado de todos los page
@@ -42,19 +42,19 @@ test('Escenario 1', async ({ page }) => {
 
   if (pages.length > 0) {
     await pages[0].click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e1_07-page_editar_original.png');
     // colocar un titulo al nuevo page
     await pageObj.pageTitle.fill(pageObj.newPageTitle);
     await pageObj.pageTitleConfirm.click();
-    await utils.waitPlease(1000);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e1_08-page_editar_diligenciado.png');
 
     // hacer clic para volver a los page y dejarlo en draft
     await pageObj.pagesBack.first().click();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await pageObj.selectAllPages();
-    await utils.waitPlease(500);
+    await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e1_09-page_listado_pages.png');
 
     pages = await pageObj.draftPages();
@@ -68,7 +68,7 @@ test('Escenario 1', async ({ page }) => {
       if (text.startsWith(textToValidate)) {
         elementFound = true;
         await i.click();
-        await utils.waitPlease(500);
+        await utils.waitPlease();
         await utils.screenshot(pageObj.pathFile, 'e1_11-page_draft_detalle.png');
         break;
       }

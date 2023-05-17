@@ -18,10 +18,10 @@ test('Escenario 1', async ({ page }) => {
   pageObj.pathFile = pageObj.pathFile + 'F3/';
 
   await login.gotoLoginPage();
-  await utils.waitPlease(100);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile,'e1_00-page_login.png');
   await login.login();
-  await utils.waitPlease(1000);
+  await utils.waitPlease();
   await utils.screenshot(pageObj.pathFile,'e1_01-page_principal.png');
 
   // Hacer clic en pagina para ver el listado de todos los page
@@ -43,7 +43,7 @@ test('Escenario 1', async ({ page }) => {
     if (text.startsWith(textToValidate)) {
       elementFound = true;
       await i.click();
-      await utils.waitPlease(500);
+      await utils.waitPlease();
       await utils.screenshot(pageObj.pathFile,'e1_07-page_draft_detalle.png');
       break;
     }
