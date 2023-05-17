@@ -27,6 +27,7 @@ test('Escenario 4', async ({ page }) => {
 
   // Hacer clic en post para ver el listado de todos los post
   await post.postsLink.click();
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e4_02-post_listado.png');
 
 

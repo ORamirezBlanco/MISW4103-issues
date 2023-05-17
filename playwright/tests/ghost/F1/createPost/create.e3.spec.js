@@ -23,6 +23,7 @@ test('Escenario 3', async ({ page }) => {
   await utils.screenshot(post.pathFile, 'e3_00-post_login.png');
   await login.login();
   await utils.waitPlease();
+  await utils.waitPlease();
   await utils.screenshot(post.pathFile, 'e3_01-post_principal.png');
 
   // Hacer clic en post para ver el listado de todos los post
