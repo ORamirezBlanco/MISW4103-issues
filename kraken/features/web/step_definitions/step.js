@@ -1,7 +1,8 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const {LoginPage} = require('../pages/login');
 const {EditorPage} = require('../pages/editor');
-const {SitePage} = require('../pages/site')
+const {SitePage} = require('../pages/site');
+const {DataStrategy} = require('../data_strategy/data');
 const fs = require('fs');
 const path = require('path');
 let properties = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../properties.json'), 'utf8'));
@@ -15,7 +16,10 @@ let loginPage = {};
 let editorPage = {};
 let sitePage = {};
 let count = 1;
-let d = {}
+let d = {};
+let dataStrategy = {};
+let cache = {};
+
 function saveScreenshot(step) {
   const order = count.toString().padStart(2, '0');
   d.saveScreenshot(`${testNameFolder}/${order}_${step}.png`);
@@ -34,6 +38,8 @@ Given('I initialize test {string}', async function (testName) {
   loginPage = new LoginPage(this.driver, properties.host);
   editorPage = new EditorPage(this.driver, properties.host);
   sitePage = new SitePage(this.driver, properties.host);
+  dataStrategy = new DataStrategy(properties.strategy.name, properties.strategy.config);
+  await dataStrategy.init();
 });
 
 Given('I navigate to editor {string}', async function (type) {
@@ -49,19 +55,42 @@ When('I enter and submit credentials', async function () {
 });
 
 When('I enter title', async function () {
-  await editorPage.setTitle(properties.title);
+  cache.editorTitle = dataStrategy.getEditorTitle();
+  await editorPage.setTitle(cache.editorTitle);
 
   saveScreenshot(`enter_title`);
 })
 
-When('I enter edit title', async function () {
-  await editorPage.setTitle(properties.titleEdit);
+When('I enter naughty title', async function () {
+  cache.editorTitle = dataStrategy.getEditorNaughtyTitle();
+  await editorPage.setTitle(cache.editorTitle);
+
+  saveScreenshot(`enter_title`);
+})
+
+When('I enter sentence title', async function () {
+  cache.editorTitle = dataStrategy.getEditorSentenceTitle();
+  await editorPage.setTitle(cache.editorTitle);
 
   saveScreenshot(`enter_edit_title`);
 })
 
+When('I enter invalid publish date', async function () {
+  cache.editorDate = dataStrategy.getEditorInvalidPublishDate();
+  await editorPage.setPublishDate(cache.editorDate);
+
+  saveScreenshot(`enter_publish_date`);
+})
+
+When('I enter invalid publish hour', async function () {
+  cache.editorHour = dataStrategy.getEditorInvalidPublishHour();
+  await editorPage.setPublishHour(cache.editorHour);
+
+  saveScreenshot(`enter_publish_hour`);
+})
+
 When('I get new id', async function () {
-  properties.newId = await editorPage.getId();
+  cache.newId = await editorPage.getId();
 })
 
 When('I go to list {string} {string}', async function (linkName1, linkName2) {
@@ -86,7 +115,7 @@ When('I publish element', async function () {
 })
 
 When('I click a new {string}', async function (type) {
-  await sitePage.clickListElement(type, properties.newId);
+  await sitePage.clickListElement(type, cache.newId);
   saveScreenshot(`click_a_new_${type}`);
 })
 
@@ -105,35 +134,34 @@ When('I confirm delete element', async function () {
   saveScreenshot(`delete_element`);
 })
 
-Then('I check exists new page with this id and {string} state', async function (status) {
-  const text = await sitePage.getSpanTextForListEditorElement("page", properties.newId);
+Then('I check exists new page with this id, title and {string} state', async function (status) {
+  const text = await sitePage.getSpanTextForListEditorElement("page", cache.newId);
+  const title = await sitePage.getH3TextForListEditorElement("page", cache.newId);
   expect(status).to.equal(text);
+  expect(title).to.equal(cache.editorTitle);
 })
 
 Then('I check exists new {string} with this id and title', async function (type) {
-  const title = await sitePage.getH3TextForListEditorElement(type, properties.newId);
-  expect(title).to.equal(properties.title);
+  const title = await sitePage.getH3TextForListEditorElement(type, cache.newId);
+  expect(title).to.equal(cache.editorTitle);
 })
 
 Then('I check exists new {string} with this id and edit title', async function (type) {
-  const title = await sitePage.getH3TextForListEditorElement(type, properties.newId);
-  expect(title).to.equal(properties.titleEdit);
+  const title = await sitePage.getH3TextForListEditorElement(type, cache.newId);
+  expect(title).to.equal(cache.editorTitle);
 })
 
 Then('I check not exists a new {string}', async function (type) {
-  const exists = await sitePage.existsListElement(type, properties.newId);
+  const exists = await sitePage.existsListElement(type, cache.newId);
   expect(exists).to.equal(false);
 })
 
-//UNMIGRATED
-Then('I check exists new element with this title', async function () {
-  let elements = await this.driver.$$(`h3=${properties.title}`);
-  let h3 = elements.length > 0;
-  expect(h3).to.equal(true);
+Then('I check invalid publish date error message', async function () {
+  const exists = await editorPage.checkExistsPublishDateError();
+  expect(exists).to.equal(true);
 })
 
-Then('I check exists new element with this edit title', async function () {
-  let elements = await this.driver.$$(`h3=${properties.titleEdit}`);
-  let exists = elements.length > 0;
+Then('I check invalid publish hour error message', async function () {
+  const exists = await editorPage.checkExistsPublishHourError();
   expect(exists).to.equal(true);
 })

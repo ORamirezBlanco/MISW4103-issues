@@ -2,7 +2,7 @@ Feature: Editar Post
 
 @user1 @web
 Scenario: Ingreso al sistema
-          Creo un post en borrador
+          Creo un post en borrador con caracteres especiales
           Vuelvo a la lista de borradores
           Selecciono el nuevo post
           Publico el post
@@ -13,7 +13,7 @@ Given I navigate to editor "post"
 And I wait for 2 seconds
 When I enter and submit credentials
 And I wait for 2 seconds
-And I enter title
+And I enter naughty title
 And I wait for 1 seconds
 And I get new id
 And I wait for 1 seconds

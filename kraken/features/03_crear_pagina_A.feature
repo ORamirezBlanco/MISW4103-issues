@@ -15,5 +15,5 @@ And I get new id
 And I wait for 1 seconds
 And I go to list "Pages" "Pages"
 And I wait for 1 seconds
-Then I check exists new page with this id and "DRAFT" state
+Then I check exists new page with this id, title and "DRAFT" state
   

@@ -1,12 +1,26 @@
 {
-  "host_": "http://localhost:2369",
-  "version_": "v3.41",
-  "host": "http://localhost:3002",
-  "version": "v4.44",
+  "host": "http://localhost:2368",
+  "version": "v3.41",
   "email": "nicohug@gmail.com",
   "password": "qwerty12345",
-  "title":"testing title",
-  "titleEdit":"testing title edit",
-  "name":"testing name"
+  "strategy_": {
+    "name": "a-priori",
+    "config": {
+      "file":"aprioriData.json",
+      "index": 0
+    }
+  },
+  "strategy__": {
+    "name": "pseudo",
+    "config": {
+      "uri":"https://my.api.mockaroo.com/editors.json?key=07afa8b0"
+    }
+  },
+  "strategy": {
+    "name": "aleatorio",
+    "config": {
+      "seed":100
+    }
+  }
 }
   

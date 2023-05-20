@@ -5,7 +5,7 @@ Scenario: Ingreso al sistema
           Creo un post en borrador
           Vuelvo a la lista de borradores
           Selecciono el nuevo post
-          Edito el título del post
+          Edito el título como una sentencia larga en el post
           Vuelvo a la lista de borradores
           Verifico que el título haya cambiado
 Given I initialize test "02_editar_post_A"
@@ -21,7 +21,7 @@ And I go to list "Posts" "Drafts"
 And I wait for 1 seconds
 And I click a new "post"
 And I wait for 1 seconds
-And I enter edit title
+And I enter sentence title
 And I wait for 1 seconds
 And I go to list "Posts" "Drafts"
 And I wait for 2 seconds

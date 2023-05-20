@@ -5,9 +5,9 @@ Scenario: Ingreso al sistema
           Creo un nuevo post
           Publico el post
           Verifico que el post exista
-          Borro el post
-          Verifico que el post no exista
-Given I initialize test "05_borrar_post_A"
+          Edito el post para que tenga un fecha de publicación inválida
+          Verifico la existencia del mensaje de error
+Given I initialize test "05_fecha_invalidada_post_A"
 Given I navigate to editor "post"
 And I wait for 2 seconds
 When I enter and submit credentials
@@ -24,8 +24,6 @@ And I click a new "post"
 And I wait for 1 seconds
 And I open a lateral menu
 And I wait for 1 seconds
-And I delete element
+And I enter invalid publish date
 And I wait for 1 seconds
-And I confirm delete element
-And I wait for 1 seconds
-Then I check not exists a new "post"
+Then I check invalid publish date error message

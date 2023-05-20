@@ -19,6 +19,28 @@ class EditorPage {
     await element.keys('Tab');
   }
 
+  async setPublishDate(value) {
+    let element = await this.driver.$('input[placeholder="YYYY-MM-DD"]');
+    await element.setValue(value);
+    await element.keys('Tab');
+  }
+
+  async setPublishHour(value) {
+    let element = await this.driver.$('.gh-date-time-picker-time input');
+    await element.setValue(value);
+    await element.keys('Tab');
+  }
+
+  async checkExistsPublishDateError() {
+    let elements = await this.driver.$$(`.gh-date-time-picker-date.error`);
+    return elements.length > 0;
+  }
+
+  async checkExistsPublishHourError() {
+    let elements = await this.driver.$$(`.gh-date-time-picker-time.error`);
+    return elements.length > 0;
+  }
+
   async getId() {
     const url = await this.driver.getUrl();
     return await url.split('/')[url.split('/').length -1];

@@ -5,8 +5,8 @@ Scenario: Ingreso al sistema
           Creo un nuevo post en borrador
           Vuelvo a la lista de borradores
           Verifico que el post exista
-          Borro el post
-          Verifico que el post no exista
+          Edito el post para que tenga un hora de publicación inválida
+          Verifico la existencia del mensaje de error
 Given I initialize test "05_borrar_post_B"
 Given I navigate to editor "post"
 And I wait for 2 seconds
@@ -22,8 +22,6 @@ And I click a new "post"
 And I wait for 1 seconds
 And I open a lateral menu
 And I wait for 1 seconds
-And I delete element
+And I enter invalid publish hour
 And I wait for 1 seconds
-And I confirm delete element
-And I wait for 1 seconds
-Then I check not exists a new "post"
+Then I check invalid publish hour error message
