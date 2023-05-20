@@ -35,6 +35,15 @@ exports.Page = class Page extends Utils {
         this.pageUpdateUnPublishConfirm = page.getByRole('button', { name: 'Unpublish', exact: true });
         this.pageScheduledButton = page.getByRole('button', { name: 'Scheduled' });
         this.pageUnPublishConfirm = page.getByRole('button', { name: 'Unschedule', exact: true });
+    
+        this.pagePageTitlePublishError = page.getByRole('button').filter({ hasText: '.close-stroke_svg__a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-l' })
+        this.pagePageScheduleHourError = page.locator('input[type="text"]').nth(1);
+        this.pagePageScheduleDayError = page.locator('input[type="text"]').nth(0);
+        this.pagePageSettingsHourError = page.locator('input[type="text"]').nth(2);
+        this.pagePageSettingsDayError = page.locator('input[type="text"]').nth(1);
+        this.pagePageSettingsConfirmError = page.getByText('Publish date');
+   
+    
     }
 
     async draftPages() {

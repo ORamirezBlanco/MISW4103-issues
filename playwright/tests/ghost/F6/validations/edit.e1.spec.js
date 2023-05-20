@@ -7,9 +7,9 @@ import { Service } from '../../../../pages/service';
 //     Creo un post en borrador
 //     Vuelvo a la lista de borradores
 //     Selecciono el nuevo post
-//     Publico el post
-//     Voy a la lista de posts publicados
-//     Verifico que el post editado exista
+//     Se actualiza el texto con un string de mas de 255 caracteres
+//     Se intenta publicar el post
+//     Se identifica un mensaje de error indicando que el texto es largo
 
 test('Escenario 1', async ({ page }) => {
 

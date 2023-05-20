@@ -1,9 +1,15 @@
 import { test } from '@playwright/test';
 import { Service } from '../../../../pages/service';
 
-// Escenario 1:
+// Escenario 3:
 
-//     
+//     Ingreso al sistema
+//     Creo un post en borrador
+//     Vuelvo a la lista de borradores
+//     Selecciono el nuevo post
+//     Calendarizo el nuevo post
+//     Se intenta colocar texto en el campo fecha de la calendarizaci[on]
+//     Se identifica un mensaje de error indicando que el el formato de dia no es correcto   
 
 test('Escenario 3', async ({ page }) => {
 

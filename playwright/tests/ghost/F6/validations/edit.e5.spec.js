@@ -1,10 +1,15 @@
 import { test } from '@playwright/test';
 import { Service } from '../../../../pages/service';
 
-// Escenario 1:
+// Escenario 5:
 
 //     Ingreso al sistema
-//     Creo un pos
+//     Creo un post en borrador
+//     Vuelvo a la lista de borradores
+//     Selecciono el nuevo post
+//     Entro a las opciones del post
+//     Se intenta colocar texto en el campo dia de la publicación
+//     Se identifica un mensaje de error indicando que el el formato de hora no es correcto
 
 test('Escenario 5', async ({ page }) => {
 
