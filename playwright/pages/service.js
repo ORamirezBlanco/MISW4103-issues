@@ -11,7 +11,7 @@ exports.Service = class Service {
     post = {};
     pageObj = {};
 
-    constructor(page) {
+    constructor(page, validations=null) {
         let result = dotenv.config();
         if (result.error) {
             throw result.error
@@ -19,7 +19,7 @@ exports.Service = class Service {
         if (process.env.GHOST_VERSION == '3.41') {
             this.login = new Login341(page);
             this.utils = new Utils(page);
-            this.post = new Post341(page);
+            this.post = new Post341(page, validations);
             this.pageObj = new Page(page);
         }
         if (process.env.GHOST_VERSION == '4.44') {

@@ -9,8 +9,8 @@ exports.Post341 = class Post341 extends Utils {
     pathFile = process.env.RESULT_IMAGES_PATH;
     waitTime = process.env.WAIT_TIME;
 
-    constructor(page) {
-        super(page);
+    constructor(page, validations) {
+        super(page, validations);
         this.page = page;
         this.postsLink = page.getByRole('link', { name: 'Posts' });
         this.postNew = page.locator('a:has-text("New post")');
@@ -35,6 +35,12 @@ exports.Post341 = class Post341 extends Utils {
         this.postUpdateUnPublishConfirm = page.getByRole('button', { name: 'Unpublish', exact: true });
         this.postScheduledButton = page.getByRole('button', { name: 'Scheduled' });
         this.postUnPublishConfirm = page.getByRole('button', { name: 'Unschedule', exact: true });
+        this.pagePostTitlePublishError = page.getByRole('button').filter({ hasText: '.close-stroke_svg__a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-l' })
+        this.pagePostScheduleHourError = page.locator('input[type="text"]').nth(1);
+        this.pagePostScheduleDayError = page.locator('input[type="text"]').nth(0);
+        this.pagePostSettingsHourError = page.locator('input[type="text"]').nth(2);
+        this.pagePostSettingsDayError = page.locator('input[type="text"]').nth(1);
+        this.pagePostSettingsConfirmError = page.getByText('Publish date');
     }
 
     async draftPost() {
