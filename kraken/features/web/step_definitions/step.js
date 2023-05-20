@@ -165,3 +165,48 @@ Then('I check invalid publish hour error message', async function () {
   const exists = await editorPage.checkExistsPublishHourError();
   expect(exists).to.equal(true);
 })
+//DANIEL
+When('I schedule element', async function () {
+  await editorPage.openPublishMenu();
+  await this.driver.pause(1000);
+  await editorPage.clickRadio(2);
+  await this.driver.pause(1000);
+
+  if(await editorPage.checkExistsScheduleButton() === true) {
+    await editorPage.clickScheduleButton();
+  }
+  
+  saveScreenshot(`schedule_post`);
+})
+
+Then('I check exists post with this {string} state', async function (status) {
+  const text = await sitePage.getSpanTextForListEditorElement("post", cache.newId);
+  expect(status).to.equal(text);
+})
+
+Then('I check exists delete button', async function () {
+  const element = await editorPage.checkExistDeleteButton();
+  expect(element).to.exist;
+  saveScreenshot(`exist_delete_element`);
+})
+
+When('I revert element {string} to Draft', async function (status) {
+  await editorPage.openPublishMenu();
+  await this.driver.pause(1000);
+  await editorPage.clickRadio(1);
+  await this.driver.pause(1000);
+
+  if (status == 'Published') {
+    if(await editorPage.checkExistsUnpublishButton() === true) {
+      await editorPage.clickUnpublishButton();
+    }
+    saveScreenshot(`unpublished_post`);
+  } else if(status == 'Scheduled'){
+    if(await editorPage.checkExistsUnscheduleButton() === true) {
+      await editorPage.clickUnscheduleButton();
+    }
+    saveScreenshot(`unschedule_post`);
+  }
+  
+  saveScreenshot(status + `_post`);
+})

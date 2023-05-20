@@ -18,4 +18,4 @@ Scenario: Ingresar al sistema
         And I wait for 2 seconds
         And I go to list "Pages" "Pages"
         And I wait for 1 seconds
-        Then I check exists new page with this id and "SCHEDULED" state
+        Then I check exists new page with this id, title and "SCHEDULED" state
