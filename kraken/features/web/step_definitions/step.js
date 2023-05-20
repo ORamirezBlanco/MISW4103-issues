@@ -187,7 +187,7 @@ Then('I check exists post with this {string} state', async function (status) {
 Then('I check exists delete button', async function () {
   const element = await editorPage.checkExistDeleteButton();
   expect(element).to.exist;
-  //saveScreenshot(`exist_delete_element`);
+  saveScreenshot(`exist_delete_element`);
 })
 
 When('I revert element {string} to Draft', async function (status) {
@@ -200,12 +200,12 @@ When('I revert element {string} to Draft', async function (status) {
     if(await editorPage.checkExistsUnpublishButton() === true) {
       await editorPage.clickUnpublishButton();
     }
-    //saveScreenshot(`unpublished_post`);
+    saveScreenshot(`unpublished_post`);
   } else if(status == 'Scheduled'){
     if(await editorPage.checkExistsUnscheduleButton() === true) {
       await editorPage.clickUnscheduleButton();
     }
-    //saveScreenshot(`unschedule_post`);
+    saveScreenshot(`unschedule_post`);
   }
   
   saveScreenshot(status + `_post`);
