@@ -80,6 +80,47 @@ class EditorPage {
     let element = await this.driver.$(`button=Delete`);
     await element.click();
   }
+  //DANIEL
+  async clickRadio(value) {
+    let element = await this.driver.$(`.gh-publishmenu-section .gh-publishmenu-radio:nth-of-type(${value}) .gh-publishmenu-radio-button`);
+    await element.click();
+  } 
+
+  async clickScheduleButton() {
+    let element = await this.driver.$(`button=Schedule`);
+    await element.click();
+  }
+
+  async checkExistsScheduleButton() {
+    let elements = await this.driver.$$(`button=Schedule`);
+    return elements.length > 0;
+  }
+
+  async checkExistDeleteButton() {
+    let element = await this.driver.$('.settings-menu-delete-button');  
+    return element.length > 0;
+  }
+
+  async checkExistsUnpublishButton() {
+    let elements = await this.driver.$$(`button=Unpublish`);
+    return elements.length > 0;
+  }  
+
+  async clickUnpublishButton() {
+    let element = await this.driver.$(`button=Unpublish`);
+    await element.click();
+  }
+  
+  async checkExistsUnscheduleButton() {
+    let elements = await this.driver.$$(`button=Unschedule`);
+    return elements.length > 0;
+  }
+
+  async clickUnscheduleButton() {
+    let element = await this.driver.$(`button=Unschedule`);
+    await element.click();
+  }
+  
 } 
 
 module.exports = { EditorPage };

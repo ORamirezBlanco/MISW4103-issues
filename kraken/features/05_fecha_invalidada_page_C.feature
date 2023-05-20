@@ -1,15 +1,14 @@
-Feature: Borrar Página
+Feature: Fecha invalida Página
 
 @user1 @web
-Scenario: Ingresar al sistema
-          Crear una Página como Draft
-          Volver a la lista de Páginas
-          Abrir la Página y el menú lateral
-          Dar clic en el botón Delete page
-          Dar clic en el modal al botón Delete
-          Verificar que no exista la Página
+Scenario: Ingreso al sistema
+          Creo una nueva Página
+          Publicar la Página
+          Verificar que la Página exista
+          Editar la Página para que tenga un fecha de publicación inválida
+          Verifico la existencia del mensaje de error
 
-        Given I initialize test "05_borrar_pagina_D"
+        Given I initialize test "05_fecha_invalidada_page_C"
         Given I navigate to editor "page"
         And I wait for 2 seconds
         When I enter and submit credentials
@@ -17,6 +16,8 @@ Scenario: Ingresar al sistema
         And I enter title
         And I wait for 1 seconds
         And I get new id
+        And I wait for 1 seconds
+        And I publish element
         And I wait for 2 seconds
         And I go to list "Pages" "Pages"
         And I wait for 1 seconds
@@ -24,8 +25,6 @@ Scenario: Ingresar al sistema
         And I wait for 1 seconds
         And I open a lateral menu
         And I wait for 1 seconds
-        And I delete element
+        And I enter invalid publish date
         And I wait for 1 seconds
-        And I confirm delete element
-        And I wait for 1 seconds
-        Then I check not exists a new "page"
+        Then I check invalid publish date error message

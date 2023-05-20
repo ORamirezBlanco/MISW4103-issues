@@ -10,7 +10,7 @@ Scenario: Ingresar al sistema
     Given I navigate to editor "post"
     When I enter and submit credentials
     And I wait for 2 seconds
-    And I enter title
+    And I enter naughty title
     And I wait for 1 seconds
     And I open a lateral menu
     And I wait for 1 seconds 
