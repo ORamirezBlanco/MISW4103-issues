@@ -22,7 +22,7 @@
   **cd MISW4103-issues/kraken**
 - Ejecutar: 
   **npm install**
-- Modificar properties.json con las credenciales de usuario reemplazando <*email*>, <*passaword*> y habilitando <*strategy*> para evaluar estrategias (1) a-priori, (2) pseudo (3) aleatorio. La combinación de los 20 escenarios y las 3 estrategias contempladas, permiten generar 60 escenarios con kraken.
+- Modificar properties.json con las credenciales de usuario reemplazando <*email*>, <*passaword*> y habilitando <*strategy*> para evaluar estrategias (1) a-priori, (2) pseudo (3) aleatorio. 
 - De ser necesario hacer un reemplazo en los features del la base de la URL donde se está ejecutando Ghost. Por defecto está configurado para ejecutarse contra http://localhost:2368
 - Ejecutar: **npx kraken-node run**
 ## Ejecución de las pruebas utilizando playwright
@@ -38,7 +38,6 @@
 - configurar las variables de entorno en el archivo **.env** que se encuentra en el directorio raiz con los parametros del sistema por cada sistema Ghost V3:
   - **GHOST_PAGE, USER_EMAIL, USER_PASSW, DATA_STRATEGY**, 
   - cambiar para USER_EMAIL el valor "<<user_email>>" y para USER_PASSW el valor "<<user_password>>", DATA_STRATEGY estrategias: 'a-priori', 'pseudo' 'aleatorio'.
-- La combinación de los 20 escenarios y las 3 estrategias contempladas, permiten generar 60 escenarios con playwright.
 - Configurar en el archivo **playwright.config.js** que se encuentra en el directorio raiz el arreglo **projects** para adicionar o retirar navegadores en la ejecucion de las pruebas.
 - Ejecutar comando para instalar las librerias:
   **npm install**
