@@ -28,7 +28,9 @@
 ## Ejecución de las pruebas utilizando playwright
 - Es necesario que la aplicación Ghost v3.41.1 se este ejecutando y su sistema sea alcanzable desde la maquina que se van a ejecutar las pruebas  
 - Confirmar la utilizacion de node 14 (14.18.0):
-  **node -v**
+  - **node -v**
+- Podria llegar a ser necesario instalar playwright
+  - *npx playwright install*
 - Descargar el repositorio:
   **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
 - Ubicarse en la carpeta playwright:
