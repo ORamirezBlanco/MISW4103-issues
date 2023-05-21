@@ -44,7 +44,7 @@
 - Ejecutar comando para lanzar las pruebas:
   - **npx playwright test**
 
-## Reporte diferencias visuales
+## Reporte incidencias
 - [Issues](https://github.com/ORamirezBlanco/MISW4103-issues/issues?q=Semana_7)
 
 #
