@@ -19,7 +19,7 @@ test('Escenario 5', async ({ page }) => {
   const utils = service.utils;
   const pageObj = service.pageObj;
 
-  pageObj.pathFile = pageObj.pathFile + 'F6/';
+  pageObj.pathFile = pageObj.pathFile + 'F7/';
 
   await login.gotoLoginPage();
   await utils.waitPlease();

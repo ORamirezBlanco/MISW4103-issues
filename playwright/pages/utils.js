@@ -33,7 +33,7 @@ exports.Utils = class Utils {
         }
     }
 
-    async getWordsError (){
+    async getWordsError() {
         if (process.env.DATA_STRATEGY == 'a-priori') {
             return data_apriori.wordsError;
         }
@@ -41,9 +41,9 @@ exports.Utils = class Utils {
         if (process.env.DATA_STRATEGY == 'pseudo') {
             await fetch(process.env.PSEUDO_DATA)
                 .then(response => response.json())
-                .then(data => { 
-                        this.wordsError = data.wordsError;
-                     })
+                .then(data => {
+                    this.wordsError = data.wordsError;
+                })
                 .catch(error => console.error(error));
             return this.wordsError;
         }
@@ -56,27 +56,36 @@ exports.Utils = class Utils {
 
     async getNewTitle() {
         if (process.env.DATA_STRATEGY == 'a-priori') {
-            return data_apriori.new_title;
+            if (this.validations) {
+                this.newTitle = data_apriori.new_long_title;
+            } else {
+                this.newTitle = data_apriori.new_title;
+            }
+            return this.newTitle;
         }
 
         if (process.env.DATA_STRATEGY == 'pseudo') {
             await fetch(process.env.PSEUDO_DATA)
                 .then(response => response.json())
-                .then(data => { 
-                    
-                    if(this.validations){
+                .then(data => {
+                    if (this.validations) {
                         this.newTitle = data.longTitle;
-                    }else{
+                    } else {
                         this.newTitle = data.title;
                     }
-                     })
+                })
                 .catch(error => console.error(error));
             return this.newTitle;
         }
 
         if (process.env.DATA_STRATEGY == 'aleatorio') {
             faker.seed();
-            return faker.commerce.productDescription();
+            if (this.validations) {
+                this.newTitle = faker.lorem.sentence({ min: 255, max: 300 });
+            } else {
+                this.newTitle = faker.commerce.productDescription();
+            }
+            return this.newTitle
         }
     }
 
