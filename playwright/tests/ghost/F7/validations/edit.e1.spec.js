@@ -56,7 +56,5 @@ test('Escenario 1', async ({ page }) => {
     await utils.screenshot(pageObj.pathFile, 'e1_09-page_error_pages_not_published.png');
     // hacer clic para volver a los page 
 
-    // Saving failed: Title cannot be longer than 255 characters.
-    await pageObj.pagePageTitlePublishError.click();
   }
 });

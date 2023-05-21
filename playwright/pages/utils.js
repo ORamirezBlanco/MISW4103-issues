@@ -50,7 +50,7 @@ exports.Utils = class Utils {
 
         if (process.env.DATA_STRATEGY == 'aleatorio') {
             faker.seed();
-            return faker.datatype.alpha(2);
+            return faker.string.alpha(2);
         }
     }
 
