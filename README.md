@@ -33,15 +33,14 @@
   **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
 - Ubicarse en la carpeta playwright:
   **cd MISW4103-issues** y después **cd playwright**
-- configurar las variables de entorno en el archivo **.env** que se encuentra en el directorio raiz con los parametros del sistema por cada sistema Ghost V3 y V4:
-  **GHOST_PAGE, USER_EMAIL, USER_PASSW, GHOST_VERSION**, cambiar para USER_EMAIL el valor "<<user_email>>" y para USER_PASSW el valor "<<user_password>>", GHOST_PAGE, GHOST_VERSION y RESULT_IMAGES_PATH para cada sistema
+- configurar las variables de entorno en el archivo **.env** que se encuentra en el directorio raiz con los parametros del sistema por cada sistema Ghost V3:
+  - **GHOST_PAGE, USER_EMAIL, USER_PASSW, DATA_STRATEGY**, 
+  - cambiar para USER_EMAIL el valor "<<user_email>>" y para USER_PASSW el valor "<<user_password>>", DATA_STRATEGY estrategias: 'a-priori', 'pseudo' 'aleatorio'.
 - Configurar en el archivo **playwright.config.js** que se encuentra en el directorio raiz el arreglo **projects** para adicionar o retirar navegadores en la ejecucion de las pruebas.
 - Ejecutar comando para instalar las librerias:
   **npm install**
 - Ejecutar comando para lanzar las pruebas:
-  - Funcionalidad Crear Post    **npx playwright test tests/ghost/F1/createPost**
-  - Funcionalidad Editar Post   **npx playwright test tests/ghost/F2/editPost**
-- Realizar la configuración para la otra version de Ghost
+  - **npx playwright test**
 
 ## Reporte diferencias visuales
 - [Issues](https://github.com/ORamirezBlanco/MISW4103-issues/issues?q=Semana_7)
