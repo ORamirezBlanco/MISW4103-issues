@@ -1,22 +1,22 @@
 {
   "host": "http://localhost:2368",
   "version": "v3.41",
-  "email": "nicohug@gmail.com",
-  "password": "qwerty12345",
-  "strategy__": {
+  "email": "<email>",
+  "password": "<password>",
+  "strategy": {
     "name": "a-priori",
     "config": {
       "file":"aprioriData.json",
       "index": 0
     }
   },
-  "strategy": {
+  "strategy_": {
     "name": "pseudo",
     "config": {
       "uri":"https://my.api.mockaroo.com/editors.json?key=07afa8b0"
     }
   },
-  "strategy_": {
+  "strategy__": {
     "name": "aleatorio",
     "config": {
       "seed":100
