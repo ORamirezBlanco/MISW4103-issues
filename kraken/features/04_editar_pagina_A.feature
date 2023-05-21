@@ -6,7 +6,8 @@ Scenario: Ingreso al sistema
           Vuelvo al listado de página
           Navego a la nueva página
           Edito el titulo extenso de la página
-          Verifico que en el listado el título esté editado
+          Intento volver a la lista de borradores
+          Verifico la aparición del mensaje de advertencia de pérdida de datos
 Given I initialize test "04_editar_pagina_A"
 Given I navigate to editor "page" 
 And I wait for 2 seconds
@@ -20,8 +21,8 @@ And I go to list "Pages" "Pages"
 And I wait for 1 seconds
 And I click a new "page"
 And I wait for 1 seconds
-And I enter sentence title
+And I enter big title
 And I wait for 1 seconds
-And I go to list "Pages" "Pages"
-And I wait for 1 seconds
-Then I check exists new "page" with this id and edit title
+And I go to list "Pages"
+And I wait for 2 seconds
+Then I check exists data loss warning message

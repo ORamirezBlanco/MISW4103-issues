@@ -1,16 +1,16 @@
-Feature: Borrar Post
+Feature: Fecha invalida Página
 
 @user1 @web
 Scenario: Ingreso al sistema
-          Creo un nuevo post
-          Publico el post
-          Verifico que el post exista
-          Edito el post para que tenga un fecha de publicación inválida
+          Creo una nueva Página
+          Publicar la Página
+          Verificar que la Página exista
+          Editar la página para que tenga un fecha de publicación inválida
           Verifico la existencia del mensaje de error
-          Edito el post para que tenga un fecha de publicación del rango de límite inferior
+          Edito la página para que tenga un fecha de publicación del rango de límite inferior
           Verifico la ausencia del mensaje de error
-Given I initialize test "05_fecha_invalidada_post_A"
-Given I navigate to editor "post"
+Given I initialize test "05_fecha_invalidada_page_C"
+Given I navigate to editor "page"
 And I wait for 2 seconds
 When I enter and submit credentials
 And I wait for 2 seconds
@@ -20,9 +20,9 @@ And I get new id
 And I wait for 1 seconds
 And I publish element
 And I wait for 2 seconds
-And I go to list "Posts" "Published"
+And I go to list "Pages" "Pages"
 And I wait for 1 seconds
-And I click a new "post"
+And I click a new "page"
 And I wait for 1 seconds
 And I open a lateral menu
 And I wait for 1 seconds

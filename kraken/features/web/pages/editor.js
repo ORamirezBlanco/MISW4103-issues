@@ -21,7 +21,15 @@ class EditorPage {
 
   async setPublishDate(value) {
     let element = await this.driver.$('input[placeholder="YYYY-MM-DD"]');
+    await element.click();
     await element.setValue(value);
+    await element.keys('Tab');
+  }
+
+  async appendAuthor(value) {
+    let element = await this.driver.$('#author-list');
+    await element.click();
+    await element.addValue(value);
     await element.keys('Tab');
   }
 
@@ -61,6 +69,16 @@ class EditorPage {
     await element.click();
   }
 
+  async clickScheduleButton() {
+    let element = await this.driver.$(`button=Schedule`);
+    await element.click();
+  }
+
+  async checkExistsPublishButton() {
+    let elements = await this.driver.$$(`button=Publish`);
+    return elements.length > 0;
+  }
+
   async checkExistsPublishButton() {
     let elements = await this.driver.$$(`button=Publish`);
     return elements.length > 0;
@@ -93,6 +111,11 @@ class EditorPage {
 
   async checkExistsScheduleButton() {
     let elements = await this.driver.$$(`button=Schedule`);
+    return elements.length > 0;
+  }
+
+  async checkExistsdataLossWarningMessage() {
+    let elements = await this.driver.$$(`.fullscreen-modal`);
     return elements.length > 0;
   }
 

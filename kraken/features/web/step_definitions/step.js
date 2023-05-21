@@ -61,6 +61,13 @@ When('I enter title', async function () {
   saveScreenshot(`enter_title`);
 })
 
+When('I enter big title', async function () {
+  cache.editorTitle = dataStrategy.getEditorTitleMoreThan257();
+  await editorPage.setTitle(cache.editorTitle);
+
+  saveScreenshot(`enter_title`);
+})
+
 When('I enter naughty title', async function () {
   cache.editorTitle = dataStrategy.getEditorNaughtyTitle();
   await editorPage.setTitle(cache.editorTitle);
@@ -80,6 +87,20 @@ When('I enter invalid publish date', async function () {
   await editorPage.setPublishDate(cache.editorDate);
 
   saveScreenshot(`enter_publish_date`);
+})
+
+When('I enter lower range publish date', async function () {
+  cache.editorDate = dataStrategy.getEditorLowerRangePublishDate();
+  await editorPage.setPublishDate(cache.editorDate);
+
+  saveScreenshot(`enter_publish_date`);
+})
+
+When('I enter nonexistent author', async function () {
+  cache.author = dataStrategy.getEditorInvalidAuthor();
+  await editorPage.appendAuthor(cache.author);
+
+  saveScreenshot(`enter_author`);
 })
 
 When('I enter invalid publish hour', async function () {
@@ -103,6 +124,12 @@ When('I go to list {string} {string}', async function (linkName1, linkName2) {
   saveScreenshot(`goto_list_${linkName1}_${linkName2}`);
 })
 
+When('I go to list {string}', async function (linkName) {
+  await editorPage.clickLinkByName(linkName);
+  
+  saveScreenshot(`goto_list_${linkName}`);
+})
+
 When('I publish element', async function () {
   await editorPage.openPublishMenu();
   await this.driver.pause(1000);
@@ -112,6 +139,17 @@ When('I publish element', async function () {
   }
   
   saveScreenshot(`publish_post`);
+})
+
+When('I publish element with upper date limit', async function () {
+  await editorPage.openPublishMenu();
+  await this.driver.pause(1000);
+  const date = dataStrategy.getEditorScheduleDateUpperLimit();
+  await editorPage.setPublishDate(date);
+  await this.driver.pause(1000);
+  await editorPage.clickScheduleButton();
+  
+  saveScreenshot(`schedule`);
 })
 
 When('I click a new {string}', async function (type) {
@@ -132,6 +170,16 @@ When('I delete element', async function () {
 When('I confirm delete element', async function () {
   await editorPage.clickConfirmDelete();
   saveScreenshot(`delete_element`);
+})
+
+Then('I check not exists new id', async function () {
+  cache.newId = await editorPage.getId();
+  expect(cache.newId?.length).to.equal(4);
+})
+
+Then('I check exists data loss warning message', async function () {
+  const exists = await editorPage.checkExistsdataLossWarningMessage();
+  expect(exists).to.equal(true);
 })
 
 Then('I check exists new page with this id, title and {string} state', async function (status) {
@@ -159,6 +207,11 @@ Then('I check not exists a new {string}', async function (type) {
 Then('I check invalid publish date error message', async function () {
   const exists = await editorPage.checkExistsPublishDateError();
   expect(exists).to.equal(true);
+})
+
+Then('I check the absence publish date error message', async function () {
+  const exists = await editorPage.checkExistsPublishDateError();
+  expect(exists).to.equal(false);
 })
 
 Then('I check invalid publish hour error message', async function () {

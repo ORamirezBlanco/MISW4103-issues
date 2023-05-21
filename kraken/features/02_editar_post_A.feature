@@ -5,9 +5,9 @@ Scenario: Ingreso al sistema
           Creo un post en borrador
           Vuelvo a la lista de borradores
           Selecciono el nuevo post
-          Edito el título como una sentencia larga en el post
-          Vuelvo a la lista de borradores
-          Verifico que el título haya cambiado
+          Ingreso el titulo del nuevo post con más de 257 caracteres
+          Intento volver a la lista de borradores
+          Verifico la aparición del mensaje de advertencia de pérdida de datos
 Given I initialize test "02_editar_post_A"
 Given I navigate to editor "post"
 And I wait for 2 seconds
@@ -21,8 +21,8 @@ And I go to list "Posts" "Drafts"
 And I wait for 1 seconds
 And I click a new "post"
 And I wait for 1 seconds
-And I enter sentence title
+And I enter big title
 And I wait for 1 seconds
-And I go to list "Posts" "Drafts"
+And I go to list "Posts"
 And I wait for 2 seconds
-Then I check exists new "post" with this id and edit title
+Then I check exists data loss warning message

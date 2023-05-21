@@ -61,6 +61,17 @@ class DataStrategy {
     }
   }
 
+  getEditorTitleMoreThan257() {
+    switch(this.strategy) {
+      case A_PRIORI_STRATEGY:
+        return this.data[this.config.index].titleMoreThan257;
+      case PSEUDO_STRATEGY:
+        return this.getPseudoValue('titleMoreThan257');
+      default: //aleatorio
+        return faker.lorem.words(200);
+    }
+  }
+
   getEditorNaughtyTitle() {
     switch(this.strategy) {
       case A_PRIORI_STRATEGY:
@@ -94,12 +105,53 @@ class DataStrategy {
     }
   }
 
+  getEditorScheduleDateUpperLimit() {
+    switch(this.strategy) {
+      case A_PRIORI_STRATEGY:
+        return this.data[this.config.index].scheduleDateUpperLimit;
+      case PSEUDO_STRATEGY:
+        return this.getPseudoValue('scheduleDateUpperLimit');
+      default: //aleatorio
+      const startDate = new Date('9999-12-01');
+      const endDate = new Date('9999-12-31');
+      
+      const randomDate = faker.date.between(startDate, endDate);
+      return randomDate.toISOString().split('T')[0];
+    }
+  }
+
+  getEditorLowerRangePublishDate() {
+    switch(this.strategy) {
+      case A_PRIORI_STRATEGY:
+        return this.data[this.config.index].publishDateLowerLimit;
+      case PSEUDO_STRATEGY:
+        return this.getPseudoValue('publishDateLowerLimit');
+      default: //aleatorio
+      const startDate = new Date('0000-12-01');
+      const endDate = new Date('0000-12-31');
+      
+      const randomDate = faker.date.between(startDate, endDate);
+      return randomDate.toISOString().split('T')[0];
+    }
+  }
+
   getEditorInvalidPublishHour() {
     switch(this.strategy) {
       case A_PRIORI_STRATEGY:
         return this.data[this.config.index].publishHourInvalid;
       case PSEUDO_STRATEGY:
         return this.getPseudoValue('publishHourInvalid');
+      default: //aleatorio
+        return faker.lorem.words(1);
+    }
+  }
+
+  getEditorInvalidAuthor() {
+    switch(this.strategy) {
+      case A_PRIORI_STRATEGY:
+        return this.data[this.config.index].authorInvalid;
+      case PSEUDO_STRATEGY:
+        return this.getPseudoValue('authorInvalid');
       default: //aleatorio
         return faker.lorem.words(1);
     }

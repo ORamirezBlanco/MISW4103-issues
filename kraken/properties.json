@@ -3,20 +3,20 @@
   "version": "v3.41",
   "email": "nicohug@gmail.com",
   "password": "qwerty12345",
-  "strategy_": {
+  "strategy__": {
     "name": "a-priori",
     "config": {
       "file":"aprioriData.json",
       "index": 0
     }
   },
-  "strategy__": {
+  "strategy": {
     "name": "pseudo",
     "config": {
       "uri":"https://my.api.mockaroo.com/editors.json?key=07afa8b0"
     }
   },
-  "strategy": {
+  "strategy_": {
     "name": "aleatorio",
     "config": {
       "seed":100

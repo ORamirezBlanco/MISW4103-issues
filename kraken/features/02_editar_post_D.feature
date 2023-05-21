@@ -14,7 +14,7 @@ Scenario: Ingresar al sistema
         Given I navigate to editor "post"
         When I enter and submit credentials
         And I wait for 2 seconds
-        And I enter naughty title
+        And I enter title
         And I wait for 1 seconds
         And I get new id
         And I wait for 1 seconds
@@ -27,4 +27,4 @@ Scenario: Ingresar al sistema
         And I revert element "Scheduled" to Draft
         And I wait for 5 seconds
         And I go to list "Posts" "Drafts"
-        Then I check exists post with this "DRAFT" state
+        Then I check exists new "post" with this id and title
