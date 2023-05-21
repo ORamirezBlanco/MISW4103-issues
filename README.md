@@ -1,5 +1,54 @@
 # Pruebas Automatizadas de Software
 
+## Entrega Semana 7
+
+## Integrantes
+
+- OSCAR EVELIO RAMIREZ BLANCO (o.ramirezb@uniandes.edu.co)
+- WILLIAM ERNESTO BALLESTEROS BLANCO (w.ballesteros@uniandes.edu.co)
+- RICARDO NICOLAS HÜG (r.hug@uniandes.edu.co)
+- LUIS DANIEL ANGEL BELTRAN (l.angelb@uniandes.edu.co)
+
+## Para más información
+-  [Wiki](https://github.com/ORamirezBlanco/MISW4103-issues/wiki)
+
+## Ejecución de las pruebas utilizando Kraken (Ubuntu):
+- Es necesario que la aplicación Ghost v3.41.1 se este ejecutando y su sistema sea alcanzable desde la maquina que se van a ejecutar las pruebas
+- Instalar node 14
+- La herramienta requiere que se tenga ADB instalado para ejecutarse
+- Descargar el repositorio:
+  **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
+- Ubicarse en la carpeta kraken:
+  **cd MISW4103-issues/kraken**
+- Ejecutar: 
+  **npm install**
+- Modificar properties.json con las credenciales de usuario reemplazando <*email*>, <*passaword*> y habilitando <*strategy*> para evaluar estrategias (1) a-priori, (2) pseudo (3) aleatorio
+- De ser necesario hacer un reemplazo en los features del la base de la URL donde se está ejecutando Ghost. Por defecto está configurado para ejecutarse contra http://localhost:2368
+- Ejecutar: **npx kraken-node run**
+## Ejecución de las pruebas utilizando playwright
+- Es necesario que la aplicación Ghost v3.41.1 se este ejecutando y su sistema sea alcanzable desde la maquina que se van a ejecutar las pruebas  
+- Confirmar la utilizacion de node 14 (14.18.0):
+  **node -v**
+- Descargar el repositorio:
+  **git clone https://github.com/ORamirezBlanco/MISW4103-issues.git**
+- Ubicarse en la carpeta playwright:
+  **cd MISW4103-issues** y después **cd playwright**
+- configurar las variables de entorno en el archivo **.env** que se encuentra en el directorio raiz con los parametros del sistema por cada sistema Ghost V3 y V4:
+  **GHOST_PAGE, USER_EMAIL, USER_PASSW, GHOST_VERSION**, cambiar para USER_EMAIL el valor "<<user_email>>" y para USER_PASSW el valor "<<user_password>>", GHOST_PAGE, GHOST_VERSION y RESULT_IMAGES_PATH para cada sistema
+- Configurar en el archivo **playwright.config.js** que se encuentra en el directorio raiz el arreglo **projects** para adicionar o retirar navegadores en la ejecucion de las pruebas.
+- Ejecutar comando para instalar las librerias:
+  **npm install**
+- Ejecutar comando para lanzar las pruebas:
+  - Funcionalidad Crear Post    **npx playwright test tests/ghost/F1/createPost**
+  - Funcionalidad Editar Post   **npx playwright test tests/ghost/F2/editPost**
+- Realizar la configuración para la otra version de Ghost
+
+## Reporte diferencias visuales
+- [Issues](https://github.com/ORamirezBlanco/MISW4103-issues/issues?q=Semana_7)
+
+#
+#
+
 ## Entrega Semana 6
 
 ## Integrantes
