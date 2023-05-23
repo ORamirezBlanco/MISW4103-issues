@@ -9,8 +9,8 @@ exports.Post341 = class Post341 extends Utils {
     pathFile = process.env.RESULT_IMAGES_PATH;
     waitTime = process.env.WAIT_TIME;
 
-    constructor(page, validations) {
-        super(page, validations);
+    constructor(page) {
+        super(page);
         this.page = page;
         this.postsLink = page.getByRole('link', { name: 'Posts' });
         this.postNew = page.locator('a:has-text("New post")');

@@ -1,6 +1,6 @@
-const { Utils } = require("./utils");
+const { Utils } = require("../utils");
 
-exports.Page = class Page extends Utils {
+exports.Page341 = class Page341 extends Utils {
 
     newPageTitle = "";
     listElements = 'li.gh-list-row.gh-posts-list-item';

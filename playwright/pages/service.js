@@ -3,7 +3,9 @@ import { Login444 } from './4.44/login';
 import { Utils } from './utils';
 import { Post341 } from './3.41/post';
 import { Post444 } from './4.44/post';
-import { Page } from './page';
+import { Page341 } from './3.41/page';
+import { Page444 } from './4.44/page';
+
 import dotenv from 'dotenv';
 exports.Service = class Service {
     login = {};
@@ -11,7 +13,7 @@ exports.Service = class Service {
     post = {};
     pageObj = {};
 
-    constructor(page, validations=null) {
+    constructor(page) {
         let result = dotenv.config();
         if (result.error) {
             throw result.error
@@ -19,14 +21,14 @@ exports.Service = class Service {
         if (process.env.GHOST_VERSION == '3.41') {
             this.login = new Login341(page);
             this.utils = new Utils(page);
-            this.post = new Post341(page, validations);
-            this.pageObj = new Page(page);
+            this.post = new Post341(page);
+            this.pageObj = new Page341(page);
         }
         if (process.env.GHOST_VERSION == '4.44') {
             this.login = new Login444(page);
             this.utils = new Utils(page);
             this.post = new Post444(page);
-            this.pageObj = new Page(page);
+            this.pageObj = new Page444(page);
         }
     }
 

@@ -52,8 +52,15 @@ test('Escenario 1', async ({ page }) => {
     await utils.waitPlease();
     await utils.screenshot(pageObj.pathFile, 'e1_08-page_editar_diligenciado.png');
 
-    await pageObj.publishPage('e1_', 9);
-    await utils.screenshot(pageObj.pathFile, 'e1_09-page_error_pages_not_published.png');
+    await pageObj.pagePublishButton.click();
+    await utils.waitPlease();
+    await utils.screenshot(pageObj.pathFile, 'e1_09-page_crear_publish_menu.png');
+
+    await pageObj.pagePublishConfirm.click();
+    await utils.waitPlease();
+    await utils.screenshot(pageObj.pathFile, 'e1_10-page_crear_publish_confirm.png');
+
+    await utils.screenshot(pageObj.pathFile, 'e1_11-page_error_pages_not_published.png');
     // hacer clic para volver a los page 
 
   }

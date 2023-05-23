@@ -8,9 +8,9 @@ exports.Utils = class Utils {
     editTitle = '';
     wordsError = '';
 
-    constructor(page, validations) {
+    constructor(page) {
         this.page = page;
-        this.validations = validations;
+        this.validations = false;
     }
 
     async screenshot(pathFile, imageName) {
