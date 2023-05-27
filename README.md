@@ -30,7 +30,7 @@
     - Instalar node 14
     - Instalar dependencias:
       **npm install**
-    - Modificar el archivo monkey-config.json especificando los valores de <BASE_URL>, <EMAIL> y <PASSWORD>
+    - Modificar el archivo monkey-config.json especificando los valores de <*BASE_URL*>, <*EMAIL*> y <*PASSWORD*>
     - Ejecutar con el comando:
       **node_modules/.bin/cypress  run -C monkey-config.json**
     - Verificar la carpeta *result* para ver el reporte
@@ -42,7 +42,7 @@
     - Instalar node 14
     - Instalar dependencias:
       **npm install**
-    - Modificar el archivo config.json especificando los valores de <BASE_URL>, <EMAIL> y <PASSWORD>
+    - Modificar el archivo config.json especificando los valores de <*BASE_URL*>, <*EMAIL*> y <*PASSWORD*>
     - Ejecutar con el comando:
       **node index.js**
     - Verificar la carpeta *results* para ver el reporte
