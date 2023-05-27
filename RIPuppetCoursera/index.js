@@ -15,6 +15,8 @@ var graphFilenameRoot = 'graph';
 //Get configuration parameters.
 let config = require('./config.json');
 let baseUrl = config.url;
+const email = config.email;
+const password = config.password;
 let headlessFlag = config.headless;
 let depthLevels = config.depthLevels;
 let inputValuesFlag = config.inputValues;
@@ -109,10 +111,8 @@ console.log(inputValues);
   })();
 
 async function initialize(page) {
-  const url = 'http://localhost:2369/ghost/#/signin';
-  const email = 'nicohug@gmail.com';
-  const password = 'qwerty12345';
-
+  const url = baseUrl.replace(/\/[^/]+$/, "/signin");
+  
   await page.goto(url);
   await page.fill('input[name="identification"]', email);
   await page.fill('input[name="password"]', password);

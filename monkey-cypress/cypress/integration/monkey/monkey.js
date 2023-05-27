@@ -2,7 +2,9 @@
 require('cypress-plugin-tab')
 var fs = require('fs')
 
-const url = Cypress.config('baseUrl') || "https://uniandes.edu.co/"
+const url = Cypress.config('baseUrl')
+const user = Cypress.config('user')
+const password = Cypress.config('password')
 const appName = Cypress.env('appName')|| "your app"
 const events = Cypress.env('events')|| 100
 const delay = Cypress.env('delay') || 100
@@ -428,9 +430,6 @@ function changeViewport(){
     viewportWidth = Cypress.config("viewportWidth")
     cy.window().then((win)=>{
         let d = win.document
-        /**
-         * fragment taken from https://stackoverflow.com/a/17698713
-         */
         curPageMaxY = Math.max( d.body.scrollHeight, d.body.offsetHeight, d.documentElement.clientHeight, d.documentElement.scrollHeight, d.documentElement.offsetHeight) - win.innerHeight
         curPageMaxX = Math.max( d.body.scrollWidth, d.body.offsetWidth, d.documentElement.clientWidth, d.documentElement.scrollWidth, d.documentElement.offsetWidth) - win.innerWidth
     })
@@ -487,23 +486,17 @@ const functions = [
     [reload, navBack, navForward, changeViewport]
 ]
 
-//var screenshotIndex = 0
-
 function randomEvent(){
     let typeIndex = getRandomInt(0, pending_events.length)
     if(pending_events[typeIndex] > 0){
-        //screenshotIndex +=1
-        //cy.screenshot('smart/'+screenshotIndex+"-"+ getEvtType(typeIndex)+"-before")
         let fIndex = getRandomInt(0, functions[typeIndex].length-1)
         functions[typeIndex][fIndex]()
         pending_events[typeIndex] --
         cy.wait(delay)
-        //cy.screenshot('smart/'+screenshotIndex+"-"+ getEvtType(typeIndex)+"-after")
     }
     else{
         functions.splice(typeIndex, 1)
         pending_events.splice(typeIndex, 1)
-        //randomEvent()
     }
 }
 
@@ -557,15 +550,12 @@ describe( `${appName} under monkeys`, function() {
     }) 
 
     beforeEach(() => {
-    cy.visit('http://localhost:2369/ghost/#/signin');
-    const email = 'nicohug@gmail.com'; // Cambia a tus credenciales de inicio de sesión de Ghost.
-  const password = 'qwerty12345'; // Cambia a tus credenciales de inicio de sesión de Ghost.
-
-    cy.get('input[name="identification"]').type(email);
-    cy.get('input[name="password"]').type(password);
-    cy.get('button[type="submit"]').click();
-    cy.url().should('include', '/ghost/#/site');
-  });
+        cy.visit(url.replace("site", "signin"));
+        cy.get('input[name="identification"]').type(user);
+        cy.get('input[name="password"]').type(password);
+        cy.get('button[type="submit"]').click();
+        cy.url().should('include', '/ghost/#/site');
+    });
 
     afterEach(()=>{
         cy.task('logEnd')
