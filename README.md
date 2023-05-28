@@ -20,8 +20,6 @@
 ## Listado de incidencias
 -  [Incidencias](https://github.com/ORamirezBlanco/MISW4103-issues/issues?page=1&q=error)
 
-### [Inventario de pruebas exploratorias]
-
 ## Video explicativo
 -  [Video](https://uniandes-my.sharepoint.com/:v:/g/personal/l_angelb_uniandes_edu_co/Eds37erAjTRAksf7Vis6BrgBo_l3N-t3wCvrnEgCwceCag?e=s3MvIf)
 
