@@ -15,7 +15,7 @@
 -  [Documento de estrategia](https://uniandes-my.sharepoint.com/:w:/r/personal/o_ramirezb_uniandes_edu_co/Documents/Q2/pruebas/w8/presupuesto.docx?d=w83a6ab5c6acb4f18b52350610ba0441d&csf=1&web=1&e=PdbZgI)
 
 ## Inventario de pruebas exploratorias
-[Inventario de pruebas exploratorias](https://github.com/ORamirezBlanco/MISW4103-issues/files/11583314/inventario-pruebas-exploratorias-integradas.xlsx)
+- [Inventario de pruebas exploratorias](https://github.com/ORamirezBlanco/MISW4103-issues/files/11583314/inventario-pruebas-exploratorias-integradas.xlsx)
 
 ## Listado de incidencias
 -  [Incidencias](https://github.com/ORamirezBlanco/MISW4103-issues/issues?page=1&q=error)
