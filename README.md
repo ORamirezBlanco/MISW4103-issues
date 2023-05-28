@@ -12,16 +12,15 @@
 -  [Wiki](https://github.com/ORamirezBlanco/MISW4103-issues/wiki)
 
 ## Estrategia de pruebas
--  [Documento de Estrategia](https://uniandes-my.sharepoint.com/:w:/r/personal/o_ramirezb_uniandes_edu_co/Documents/Q2/pruebas/w8/presupuesto.docx?d=w83a6ab5c6acb4f18b52350610ba0441d&csf=1&web=1&e=PdbZgI)
+-  [Documento de estrategia](https://uniandes-my.sharepoint.com/:w:/r/personal/o_ramirezb_uniandes_edu_co/Documents/Q2/pruebas/w8/presupuesto.docx?d=w83a6ab5c6acb4f18b52350610ba0441d&csf=1&web=1&e=PdbZgI)
 
 ## Inventario de pruebas expploratorias
-- [Inventario]() inventario-pruebas-exploratorias-integradas
+- [Inventario](https://github.com/ORamirezBlanco/MISW4103-issues/files/11559317/inventario-pruebas-exploratorias.xlsx)
 
 ## Listado de incidencias
 -  [Incidencias](https://github.com/ORamirezBlanco/MISW4103-issues/issues?page=1&q=error)
 
-## Pruebas exploratorias
-### [Inventario de pruebas exploratorias](https://github.com/ORamirezBlanco/MISW4103-issues/files/11559317/inventario-pruebas-exploratorias.xlsx)
+### [Inventario de pruebas exploratorias]
 
 ## Video explicativo
 -  [Video](https://uniandes-my.sharepoint.com/:v:/g/personal/l_angelb_uniandes_edu_co/Eds37erAjTRAksf7Vis6BrgBo_l3N-t3wCvrnEgCwceCag?e=s3MvIf)
