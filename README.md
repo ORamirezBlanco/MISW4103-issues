@@ -14,7 +14,7 @@
 ## Estrategia de pruebas
 -  [Documento de estrategia](https://uniandes-my.sharepoint.com/:w:/r/personal/o_ramirezb_uniandes_edu_co/Documents/Q2/pruebas/w8/presupuesto.docx?d=w83a6ab5c6acb4f18b52350610ba0441d&csf=1&web=1&e=PdbZgI)
 
-## Inventario de pruebas expploratorias
+## Inventario de pruebas exploratorias
 - [Inventario](https://github.com/ORamirezBlanco/MISW4103-issues/files/11559317/inventario-pruebas-exploratorias.xlsx)
 
 ## Listado de incidencias
